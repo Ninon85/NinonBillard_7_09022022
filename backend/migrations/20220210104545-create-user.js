@@ -10,23 +10,23 @@ module.exports = {
 			},
 			username: {
 				allowNull: false,
-				type: Sequelize.STRING,
+				type: Sequelize.STRING(25),
 			},
 			email: {
 				allowNull: false,
 				unique: true,
-				type: Sequelize.STRING,
+				type: Sequelize.STRING(255),
 			},
 			password: {
 				allowNull: false,
-				type: Sequelize.STRING,
+				type: Sequelize.STRING255,
 			},
 			avatar: {
-				type: Sequelize.STRING,
+				type: Sequelize.STRING(800),
 				defaultValue: "../public/defaultPicture/random-user.png",
 			},
 			job: {
-				type: Sequelize.STRING,
+				type: Sequelize.STRING(255),
 			},
 			isAdmin: {
 				type: Sequelize.BOOLEAN,
@@ -34,11 +34,11 @@ module.exports = {
 			},
 			createdAt: {
 				allowNull: false,
-				type: Sequelize.DATE,
+				type: Sequelize.DATEONLY,
 			},
 			updatedAt: {
 				allowNull: false,
-				type: Sequelize.DATE,
+				type: Sequelize.DATEONLY,
 			},
 		});
 	},
