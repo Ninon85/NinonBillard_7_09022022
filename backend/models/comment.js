@@ -23,8 +23,8 @@ module.exports = (sequelize, DataTypes) => {
 	}
 	Comment.init(
 		{
-			user_id: DataTypes.INTEGER,
-			post_id: DataTypes.INTEGER,
+			user_id: DataTypes.INTEGER.UNSIGNED,
+			post_id: DataTypes.INTEGER.UNSIGNED,
 			content: DataTypes.STRING(600),
 			attachment: DataTypes.STRING(800),
 		},

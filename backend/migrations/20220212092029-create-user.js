@@ -19,7 +19,7 @@ module.exports = {
 			},
 			password: {
 				allowNull: false,
-				type: Sequelize.STRING255,
+				type: Sequelize.STRING(255),
 			},
 			avatar: {
 				type: Sequelize.STRING(800),
