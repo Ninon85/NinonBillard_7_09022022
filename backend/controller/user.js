@@ -71,9 +71,16 @@ exports.login = (req, res) => {
 					}
 					res.status(200).json({
 						userId: user.id,
-						// token: jwt.sign({ userId: user.id }, process.env.TOKEN, {
-						// 	expiresIn: "6h",
-						// }),
+						token: jwt.sign(
+							{
+								userId: user.id,
+								isAdmin: user.isAdmin,
+							},
+							process.env.TOKEN,
+							{
+								expiresIn: "6h",
+							}
+						),
 					});
 				})
 				.catch((err) => res.status(500).json({ err }));

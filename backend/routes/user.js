@@ -1,7 +1,27 @@
 const router = require("express").Router();
 const userCtrl = require("../controller/user");
-router.post("/signup", userCtrl.createUser);
-router.post("/login", userCtrl.login);
+const inputsValidation = require("../middleware/inputsValidation");
+//create 1 user
+router.post(
+	"/signup",
+	inputsValidation.email,
+	inputsValidation.password,
+	userCtrl.createUser
+);
+//login
+router.post(
+	"/login",
+	inputsValidation.email,
+	inputsValidation.password,
+	userCtrl.login
+);
+//delete 1 user
 router.delete("/unsubscribe/:id", userCtrl.deleteUser);
-router.put("/login/update/:id", userCtrl.updateLogin); //ajouter auth middleware
+//update email
+router.put(
+	"/login/update/:id",
+	inputsValidation.email,
+	inputsValidation.password,
+	userCtrl.updateLogin
+); //ajouter auth middleware
 module.exports = router;

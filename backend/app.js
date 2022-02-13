@@ -1,5 +1,7 @@
 const express = require("express");
 const path = require("path");
+//import dotenv
+require("dotenv").config();
 //-----------------------
 //router
 //-----------------------
