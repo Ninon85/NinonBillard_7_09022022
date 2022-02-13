@@ -8,7 +8,7 @@ module.exports = {
 				primaryKey: true,
 				type: Sequelize.INTEGER.UNSIGNED,
 			},
-			user_id: {
+			userId: {
 				allowNull: false,
 				type: Sequelize.INTEGER.UNSIGNED,
 				//if the reference (user) is deleted his posts will be deleted too

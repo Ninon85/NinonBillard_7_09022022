@@ -9,34 +9,20 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate(models) {
 			// define association here
-			models.Post.hasMany(models.Comment, {
-				foreignKey: {
-					allowNull: false,
-					onDelete: "cascade",
-				},
-			});
-			models.Post.hasMany(models.Like, {
-				foreignKey: {
-					allowNull: false,
-					onDelete: "cascade",
-				},
-			});
-			models.Post.hasMany(models.Dislike, {
-				foreignKey: {
-					allowNull: false,
-				},
-				onDelete: "cascade",
-			});
+			Post.hasMany(models.Comment, { onDelete: "cascade" });
+			Post.hasMany(models.Like, { onDelete: "cascade" });
+			Post.hasMany(models.Dislike, { onDelete: "cascade" });
 			Post.belongsTo(models.User, {
 				foreignKey: {
 					allowNull: false,
+					name: "userId",
 				},
 			});
 		}
 	}
 	Post.init(
 		{
-			user_id: DataTypes.INTEGER.UNSIGNED,
+			userId: DataTypes.INTEGER.UNSIGNED,
 			content: DataTypes.STRING(1000),
 			attachment: DataTypes.STRING(800),
 		},

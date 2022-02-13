@@ -8,7 +8,8 @@ module.exports = {
 				primaryKey: true,
 				type: Sequelize.INTEGER.UNSIGNED,
 			},
-			user_id: {
+			userId: {
+				allowNull: false,
 				type: Sequelize.INTEGER.UNSIGNED,
 				//if user is deleted, comments will be deleted too
 				onDelete: "CASCADE",
@@ -17,7 +18,8 @@ module.exports = {
 					key: "id",
 				},
 			},
-			post_id: {
+			postId: {
+				allowNull: false,
 				type: Sequelize.INTEGER.UNSIGNED,
 				//if post is deleted, comments will be deleted too
 				onDelete: "CASCADE",

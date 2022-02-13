@@ -8,7 +8,8 @@ module.exports = {
 				primaryKey: true,
 				type: Sequelize.INTEGER.UNSIGNED,
 			},
-			user_id: {
+			userId: {
+				allowNull: false,
 				type: Sequelize.INTEGER.UNSIGNED,
 				//if the reference (user) is deleted his dislikes will be deleted too
 				onDelete: "CASCADE",
@@ -17,7 +18,8 @@ module.exports = {
 					key: "id",
 				},
 			},
-			post_id: {
+			postId: {
+				allowNull: false,
 				type: Sequelize.INTEGER.UNSIGNED,
 				//if the reference (post) is deleted his dislikeS will be deleted too
 				onDelete: "CASCADE",

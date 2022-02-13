@@ -12,19 +12,21 @@ module.exports = (sequelize, DataTypes) => {
 			Like.belongsTo(models.User, {
 				foreignKey: {
 					allowNull: false,
+					name: "userId",
 				},
 			});
 			Like.belongsTo(models.Post, {
 				foreignKey: {
 					allowNull: false,
+					name: "postId",
 				},
 			});
 		}
 	}
 	Like.init(
 		{
-			user_id: DataTypes.INTEGER.UNSIGNED,
-			post_id: DataTypes.INTEGER.UNSIGNED,
+			userId: DataTypes.INTEGER.UNSIGNED,
+			postId: DataTypes.INTEGER.UNSIGNED,
 			likes: DataTypes.INTEGER.UNSIGNED,
 		},
 		{

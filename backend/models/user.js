@@ -9,15 +9,15 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate(models) {
 			// define association here
-			models.User.hasMany(models.Post, { onDelete: "cascade" });
-			models.User.hasMany(models.Comment, { onDelete: "cascade" });
-			models.User.hasMany(models.Like, { onDelete: "cascade" });
-			models.User.hasMany(models.Dislike, { onDelete: "cascade" });
+			User.hasMany(models.Post, { onDelete: "cascade" });
+			User.hasMany(models.Comment, { onDelete: "cascade" });
+			User.hasMany(models.Like, { onDelete: "cascade" });
+			User.hasMany(models.Dislike, { onDelete: "cascade" });
 		}
 	}
 	User.init(
 		{
-			username: DataTypes.STRING(25),
+			username: DataTypes.STRING(50),
 			email: DataTypes.STRING(255),
 			password: DataTypes.STRING(255),
 			avatar: DataTypes.STRING(800),
