@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const helmet = require("helmet");
 //import dotenv
 require("dotenv").config();
 //-----------------------
@@ -29,6 +30,12 @@ app.use((req, res, next) => {
 	);
 	next();
 });
+app.use(
+	helmet({
+		//allow frontend and backend to share resources (ports are different)
+		crossOriginResourcePolicy: false,
+	})
+);
 
 //to recover body request for read json files (convert into js object)
 app.use(express.json());

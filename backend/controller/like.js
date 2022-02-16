@@ -1,16 +1,14 @@
 const db = require("../models/index");
 exports.likeStatus = (req, res, next) => {
-	const likes = req.body.likes;
-	const userId = req.body.userId;
-	// on cherche la sauce sélectionnée
 	db.Like.findOne({
-		where: { userId: req.body.userId, postId: req.params.id },
+		//find userId from middleware auth
+		where: { userId: req.auth.userId, postId: req.params.id },
 	})
 		.then((like) => {
-			// unlike
-			if (like && likes === 0) {
+			// unlike if userId has ever like the post
+			if (like) {
 				db.Like.destroy({
-					where: { userId: req.body.userId, postId: req.params.id },
+					where: { userId: req.auth.userId, postId: req.params.id },
 				})
 					.then(() =>
 						res.status(200).json({
@@ -19,17 +17,22 @@ exports.likeStatus = (req, res, next) => {
 					)
 					.catch((err) => res.status(400).json(err));
 				//if userId isn't in the array like +1
-			} else if (!like && likes === 1) {
+			} else {
 				db.Like.create({
 					postId: req.params.id,
-					userId: req.body.userId,
+					userId: req.auth.userId,
 					likes: req.body.likes,
 				})
 					.then(() => res.status(201).json({ message: "Like enregistré" }))
 					.catch((err) => res.status(400).json({ err }));
-			} else {
-				return res.status(400).json({ err });
 			}
 		})
 		.catch((err) => res.status(500).json({ err }));
+};
+exports.numberOfLikes = (req, res) => {
+	db.Like.count({
+		where: { postId: req.params.id },
+	})
+		.then((number) => res.status(200).json({ number }))
+		.catch((err) => res.status(400).json(err));
 };

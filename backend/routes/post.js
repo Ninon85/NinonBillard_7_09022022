@@ -12,7 +12,7 @@ router.post(
 	multerPost,
 	postCtrl.createPost
 );
-//get all post whith owner
+//get all post whith owner and like post
 router.get("/", auth, postCtrl.getAllPost);
 //update 1 post
 router.put("/:id", auth, multerPost, postCtrl.updatePost);

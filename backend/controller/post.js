@@ -76,10 +76,12 @@ exports.updatePost = (req, res) => {
 		})
 		.catch((err) => res.status(500).json({ err }));
 };
-//get all post with owner
+//get all posts with owner and post's likes
 exports.getAllPost = (req, res) => {
 	db.Post.findAll({
-		include: [{ model: db.User }],
+		include: [{ model: db.User }, { model: db.Like }],
+		//du plus recent au plus ancien
+		order: [["id", "DESC"]],
 	})
 		.then((posts) => res.status(200).json(posts))
 		.catch((error) => res.status(400).json({ error }));
