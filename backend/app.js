@@ -7,7 +7,7 @@ require("dotenv").config();
 //-----------------------
 const userRoutes = require("./routes/user");
 const postRoutes = require("./routes/post");
-const likeRoutes = require("./routes//like");
+const likeRoutes = require("./routes/like");
 const commentRoutes = require("./routes/comment");
 //-----------------------//-----------------------//-----------------------//-----------------------//-----------------------//-----------------------
 
@@ -35,10 +35,10 @@ app.use(express.json());
 //-----------------------------------
 //Roads API
 //-----------------------------------
-app.use("/api/auth", userRoutes);
+app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
 app.use("/api/post", likeRoutes);
-app.use("api/post", commentRoutes);
-app.use("/images", express.static(path.join(__dirname, "./public/postPic")));
+app.use("/api/comment", commentRoutes);
+app.use("/images", express.static(path.join(__dirname, "public")));
 // export app, now we can use this app from the other files of the project
 module.exports = app;

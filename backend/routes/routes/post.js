@@ -7,13 +7,12 @@ const multerPost = require("../middleware/multer_config_post");
 router.post(
 	"/",
 	auth,
-	multerPost,
 	inputsValidation.content,
 	multerPost,
 	postCtrl.createPost
 );
-//get all post whith owner
-router.get("/", auth, postCtrl.getAllPost);
+//get all post
+router.get("/");
 //update 1 post
 router.put("/:id", auth, multerPost, postCtrl.updatePost);
 //delete 1 post
