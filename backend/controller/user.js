@@ -68,7 +68,9 @@ exports.login = (req, res) => {
 				.compare(req.body.password, user.password)
 				.then((valid) => {
 					if (!valid) {
-						return res.status(401).json({ error: "Mot de passe incorrect !" });
+						return res
+							.status(401)
+							.json({ message: "Mot de passe incorrect !" });
 					}
 					res.status(200).json({
 						userId: user.id,

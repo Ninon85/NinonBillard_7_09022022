@@ -15,32 +15,6 @@
   background: #3574da;
 }
 
-.active-btn {
-  background: #3574da;
-  border-radius: 5px;
-}
-
-.btn {
-  background: red;
-  width: 10%;
-  border-radius: 5px;
-}
-
-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 65px;
-  width: 100%;
-  border-bottom: 2px inset #d5d5d5;
-}
-
 .home-page {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -55,7 +29,6 @@ header {
 }
 
 .log-container {
-  background: yellow;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

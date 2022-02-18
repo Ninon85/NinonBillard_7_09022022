@@ -10,7 +10,7 @@ exports.email = [
 	(req, res, next) => {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
+			return res.status(422).json(errors.mapped());
 		}
 		next();
 	},
@@ -56,7 +56,7 @@ exports.name = [
 	(req, res, next) => {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
+			return res.status(422).json(errors.mapped());
 		}
 		next();
 	},
@@ -74,7 +74,7 @@ exports.job = [
 	(req, res, next) => {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
+			return res.status(422).json(errors.mapped());
 		}
 		next();
 	},
@@ -92,7 +92,7 @@ exports.content = [
 	(req, res, next) => {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
+			return res.status(422).json(errors.mapped());
 		}
 		next();
 	},
@@ -111,7 +111,7 @@ exports.contentComment = [
 	(req, res, next) => {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
+			return res.status(422).json(errors.mapped());
 		}
 		next();
 	},
