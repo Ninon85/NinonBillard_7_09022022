@@ -51,7 +51,7 @@ exports.name = [
 		.blacklist("{}$<>=")
 		.isAlpha("fr-FR", { ignore: " -" })
 		.withMessage(
-			"Votre nom de doit pas contenir de chiffres ni caractères spéciaux"
+			"Votre nom de doit pas contenir de chiffres ni caractères spéciaux, 3 caractères minimum"
 		),
 	(req, res, next) => {
 		const errors = validationResult(req);

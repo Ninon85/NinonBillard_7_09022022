@@ -21,8 +21,10 @@
 
 .form-container {
     width: 100%;
-
-    justify-content: center;
+    background: rgba(0, 0, 0, 0.609);
+    padding: 2em;
+    border-radius: 30px/30px;
+    border: 2px double rgb(77, 77, 77);
 }
 
 ul {
@@ -30,12 +32,25 @@ ul {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    color: #fff;
 }
 
-// .loginError {
-//     background-color: aqua;
-//     height: 50vh;
-//     width: 100%;
-//     color: black;
-//     font-size: 16px;
-// }
+.loginError {
+    // background-color: aqua;
+    // height: 50vh;
+    // width: 100%;
+    // font-size: 16px;
+    color: rgb(247, 8, 8);
+}
+
+
+
+#logForm {
+    margin-top: 2%;
+    color: #fff;
+
+    input {
+        border-radius: 8px;
+        padding: 0.5em;
+    }
+}
