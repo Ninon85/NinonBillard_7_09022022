@@ -2,6 +2,11 @@
     background: $color-primary;
     // width: 10%;
     border-radius: 5px;
+    padding: 1em;
+}
+
+input[type=submit] {
+    cursor: pointer;
 }
 
 .btn {

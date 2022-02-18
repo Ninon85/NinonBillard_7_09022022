@@ -46,7 +46,7 @@ exports.name = [
 	body("username")
 		.notEmpty()
 		.isLength({ min: 3 })
-		.withMessage("Minimum 3 caractères !")
+		.withMessage("Votre prénom doit contenir minimum 3 caractères !")
 		//this char will not be records in db
 		.blacklist("{}$<>=")
 		.isAlpha("fr-FR", { ignore: " -" })
@@ -65,7 +65,9 @@ exports.job = [
 	body("job")
 		.notEmpty()
 		.isLength({ min: 4 })
-		.withMessage("Minimum 4 caractères !")
+		.withMessage(
+			"L'intitulé de votre poste doit contenir minimum 4 caractères !"
+		)
 		.blacklist("{}$<>=")
 		.isAlpha("fr-FR", { ignore: " -" })
 		.withMessage(

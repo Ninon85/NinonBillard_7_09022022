@@ -10,3 +10,11 @@
         @content;
     }
 }
+
+@mixin mobile-only {
+    @media screen and (min-width: map-get($breakpoints, min-mob)) and (max-width: map-get($breakpoints, max-mob)) {
+        @content;
+    }
+
+
+}

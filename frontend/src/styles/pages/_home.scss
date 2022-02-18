@@ -11,6 +11,10 @@
     display: flex;
     justify-content: center;
     width: 50%;
+
+    @include mobile-only {
+        width: 100%;
+    }
 }
 
 .connection-form {
@@ -21,10 +25,10 @@
 
 .form-container {
     width: 100%;
-    background: rgba(0, 0, 0, 0.609);
+    background: rgba(0, 0, 0, 0.274);
     padding: 2em;
     border-radius: 30px/30px;
-    border: 2px double rgb(77, 77, 77);
+    border: 1px double rgba(77, 77, 77, 0.541);
 }
 
 ul {
@@ -33,6 +37,14 @@ ul {
     width: 100%;
     justify-content: space-between;
     color: #fff;
+
+    li {
+        cursor: pointer;
+        padding: 1em;
+        border: 1px outset rgba(255, 255, 255, 0.603);
+        border-radius: 5px;
+
+    }
 }
 
 .loginError {
@@ -52,5 +64,12 @@ ul {
     input {
         border-radius: 8px;
         padding: 0.5em;
+        width: 50%;
+        border: none;
+
+        @include mobile-only {
+            width: 100%;
+        }
     }
+
 }

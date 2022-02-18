@@ -5,7 +5,7 @@
           box-sizing: border-box;
   list-style-type: none;
   text-decoration: none;
-  font-size: 1em;
+  font-size: 1.01em;
 }
 
 *::-moz-selection {
@@ -19,6 +19,11 @@
 .active-btn {
   background: #3574da;
   border-radius: 5px;
+  padding: 1em;
+}
+
+input[type=submit] {
+  cursor: pointer;
 }
 
 .btn {
@@ -50,6 +55,12 @@
   width: 50%;
 }
 
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .log-container {
+    width: 100%;
+  }
+}
+
 .connection-form {
   width: 100%;
   display: -webkit-box;
@@ -62,10 +73,10 @@
 
 .form-container {
   width: 100%;
-  background: rgba(0, 0, 0, 0.609);
+  background: rgba(0, 0, 0, 0.274);
   padding: 2em;
   border-radius: 30px/30px;
-  border: 2px double #4d4d4d;
+  border: 1px double rgba(77, 77, 77, 0.541);
 }
 
 ul {
@@ -80,6 +91,13 @@ ul {
   color: #fff;
 }
 
+ul li {
+  cursor: pointer;
+  padding: 1em;
+  border: 1px outset rgba(255, 255, 255, 0.603);
+  border-radius: 5px;
+}
+
 .loginError {
   color: #f70808;
 }
@@ -92,5 +110,13 @@ ul {
 #logForm input {
   border-radius: 8px;
   padding: 0.5em;
+  width: 50%;
+  border: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  #logForm input {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=main.css.map */

@@ -2,3 +2,14 @@ $color-primary:#3574da;
 $color-secondary:#FF79DA;
 $color-tertiary:#99E2D0;
 $color-quaternary: #d5d5d5;
+//maps
+$breakpoints:(min-tab: 501px,
+    max-tab: 800px,
+    min-desk: 801px,
+    min-mob:320px,
+    max-mob:425px);
+
+// $bg-color-section: (search: $color-fifth,
+//     operation: $color-seventh,
+//     restaurants:$color-fifth,
+//     footer:$color-heighth);
