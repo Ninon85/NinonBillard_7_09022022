@@ -16,7 +16,14 @@ exports.createUser = (req, res) => {
 				job: req.body.job,
 				// isAdmin: req.body.isAdmin,
 			})
-				.then(() => res.status(201).json({ message: "Utilisateur crée" }))
+				.then(() =>
+					res
+						.status(201)
+						.json({
+							message:
+								"Votre compte a été crée avec succés, vous pouvez dersormais vous connecter ! ✔",
+						})
+				)
 				.catch((err) =>
 					res.status(400).json({
 						error: err.parent.errno,

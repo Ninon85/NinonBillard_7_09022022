@@ -32,6 +32,51 @@ input[type=submit] {
   border-radius: 5px;
 }
 
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 80px;
+  width: 100%;
+  border-bottom: 2px inset #d5d5d5;
+  padding: 0 5% 0 2%;
+}
+
+nav .logo-container {
+  width: 30%;
+  height: 100%;
+}
+
+nav .logo-container img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+nav ul {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+nav ul li {
+  cursor: pointer;
+  padding: 1em;
+  border: 1px outset rgba(255, 255, 255, 0.603);
+  border-radius: 5px;
+}
+
 .home-page {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -79,7 +124,7 @@ input[type=submit] {
   border: 1px double rgba(77, 77, 77, 0.541);
 }
 
-ul {
+.form-container ul {
   width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -91,7 +136,7 @@ ul {
   color: #fff;
 }
 
-ul li {
+.form-container ul li {
   cursor: pointer;
   padding: 1em;
   border: 1px outset rgba(255, 255, 255, 0.603);
@@ -100,6 +145,10 @@ ul li {
 
 .loginError {
   color: #f70808;
+}
+
+.valid {
+  color: #006e00;
 }
 
 #logForm {

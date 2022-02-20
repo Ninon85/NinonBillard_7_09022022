@@ -25,25 +25,26 @@
 
 .form-container {
     width: 100%;
-    background: rgba(0, 0, 0, 0.274);
+    background: $bg;
     padding: 2em;
     border-radius: 30px/30px;
     border: 1px double rgba(77, 77, 77, 0.541);
-}
 
-ul {
-    width: 50%;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    color: #fff;
 
-    li {
-        cursor: pointer;
-        padding: 1em;
-        border: 1px outset rgba(255, 255, 255, 0.603);
-        border-radius: 5px;
+    ul {
+        width: 50%;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        color: #fff;
 
+        li {
+            cursor: pointer;
+            padding: 1em;
+            border: 1px outset rgba(255, 255, 255, 0.603);
+            border-radius: 5px;
+
+        }
     }
 }
 
@@ -55,7 +56,9 @@ ul {
     color: rgb(247, 8, 8);
 }
 
-
+.valid {
+    color: rgb(0, 110, 0);
+}
 
 #logForm {
     margin-top: 2%;
