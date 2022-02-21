@@ -7,10 +7,11 @@ const MIME_TYPES = {
 	"image/png": "png",
 	"image/gif": "gif",
 };
+
 //objet de configuration pour multer
 const storage = multer.diskStorage({
 	destination: (req, file, callback) => {
-		callback(null, "public/postPic");
+		callback(null, `public/postPic/picOf-${req.auth.userId}`);
 	},
 	filname: (req, file, callback) => {
 		const name = file.originalname.split(" ").join("_");

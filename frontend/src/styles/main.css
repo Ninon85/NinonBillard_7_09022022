@@ -45,12 +45,23 @@ nav {
   height: 80px;
   width: 100%;
   border-bottom: 2px inset #d5d5d5;
-  padding: 0 5% 0 2%;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  nav {
+    padding: 0;
+  }
 }
 
 nav .logo-container {
   width: 30%;
   height: 100%;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  nav .logo-container {
+    width: 50%;
+  }
 }
 
 nav .logo-container img {
@@ -66,8 +77,17 @@ nav ul {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  nav ul {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
 }
 
 nav ul li {
@@ -75,6 +95,12 @@ nav ul li {
   padding: 1em;
   border: 1px outset rgba(255, 255, 255, 0.603);
   border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .home-page {

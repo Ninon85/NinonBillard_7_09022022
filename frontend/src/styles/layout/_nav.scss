@@ -5,7 +5,11 @@ nav {
     height: 80px;
     width: 100%;
     border-bottom: 2px inset $color-quaternary;
-    padding: 0 5% 0 2%;
+
+
+    @include mobile-only {
+        padding: 0;
+    }
 
 
 
@@ -13,6 +17,10 @@ nav {
 
         width: 30%;
         height: 100%;
+
+        @include mobile-only {
+            width: 50%;
+        }
 
         img {
             height: 100%;
@@ -25,14 +33,22 @@ nav {
         width: 50%;
         display: flex;
         width: 100%;
-        justify-content: space-around;
+        justify-content: center;
+        // justify-content: space-between;
+        // padding: 0 2% 0 2%;
+
         // color: #fff;
+        @include mobile-only {
+            justify-content: space-between;
+        }
 
         li {
             cursor: pointer;
             padding: 1em;
             border: 1px outset rgba(255, 255, 255, 0.603);
             border-radius: 5px;
+            display: flex;
+            align-items: center;
 
         }
     }

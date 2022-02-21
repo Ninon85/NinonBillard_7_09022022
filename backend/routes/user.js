@@ -20,7 +20,7 @@ router.post(
 	inputsValidation.password,
 	userCtrl.login
 );
-//delete 1 user
+//delete 1 user auth,
 router.delete("/unsubscribe/:id", auth, userCtrl.deleteUser);
 //update email
 router.put(

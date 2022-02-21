@@ -2,15 +2,16 @@ const db = require("../models/index");
 const fs = require("fs");
 
 exports.createPost = (req, res, next) => {
+	// console.log(req);
 	if (req.body.content === " " && !req.file) {
 		return res.status(400).json({ message: "Un post ne peut pas être vide" });
 	}
 	const newPost = req.file
 		? {
 				...JSON.parse(req.body.post),
-				attachment: `${req.protocol}://${req.get("host")}/public/postPic/${
-					req.file.filename
-				}`,
+				attachment: `${req.protocol}://${req.get(
+					"host"
+				)}/public/postPic/picOf-${req.body.post.userId}/${req.file.filename}`,
 		  }
 		: { ...req.body };
 	if (newPost.userId !== req.auth.userId) {
@@ -35,8 +36,12 @@ exports.deletePost = (req, res) => {
 			}
 			if (post.attachment) {
 				//supprimer images eventuelles du post
-				const imageToDelete = post.attachment.split("/public/postPic/")[1];
-				fs.unlinkSync(`public/postPic/${imageToDelete}`);
+				const imageToDelete = post.attachment.split(
+					`/public/postPic/picOf-${post.userId}`
+				)[1];
+				fs.unlink(`public/postPic/${post.userId}/${imageToDelete}`, () =>
+					console.log("image supprimée")
+				);
 			}
 
 			post
@@ -50,9 +55,9 @@ exports.updatePost = (req, res) => {
 	const postUpdate = req.file
 		? {
 				...JSON.parse(req.body.post),
-				attachment: `${req.protocol}://${req.get("host")}/public/postPic/${
-					req.file.filename
-				}`,
+				attachment: `${req.protocol}://${req.get(
+					"host"
+				)}/public/postPic/picOf-${req.body.post.userId}/${req.file.filename}`,
 		  }
 		: { ...req.body };
 	db.Post.findOne({
@@ -67,8 +72,10 @@ exports.updatePost = (req, res) => {
 			}
 			if (req.file && post.attachment) {
 				//delete the old picture
-				const imageToDelete = post.attachment.split("/public/postPic/")[1];
-				fs.unlinkSync(`public/postPic/${imageToDelete}`);
+				const imageToDelete = post.attachment.split(
+					`/public/postPic/${post.userId}`
+				)[1];
+				fs.unlinkSync(`public/postPic/${post.userId}/${imageToDelete}`);
 			}
 			db.Post.update({ ...postUpdate }, { where: { id: req.params.id } })
 				.then(() => res.status(200).json({ message: "Post mis à jour !" }))

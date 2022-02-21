@@ -1,6 +1,7 @@
 const db = require("../models/index");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const fs = require("fs");
 
 exports.createUser = (req, res) => {
 	bcrypt
@@ -16,14 +17,17 @@ exports.createUser = (req, res) => {
 				job: req.body.job,
 				// isAdmin: req.body.isAdmin,
 			})
-				.then(() =>
-					res
-						.status(201)
-						.json({
-							message:
-								"Votre compte a été crée avec succés, vous pouvez dersormais vous connecter ! ✔",
-						})
-				)
+				.then((user) => {
+					const dirname = "picOf-" + user.id;
+					fs.mkdir(`public/postPic/${dirname}`, () => {
+						fs.mkdir(`public/profilPic/${dirname}`, () => {
+							res.status(201).json({
+								message:
+									"Votre compte a été crée avec succés, vous pouvez desormais vous connecter ! ✔",
+							});
+						});
+					});
+				})
 				.catch((err) =>
 					res.status(400).json({
 						error: err.parent.errno,
@@ -46,16 +50,31 @@ exports.deleteUser = (req, res) => {
 			if (!user) {
 				return res.status(400).json({ message: "Aucun utilisateur trouvé !" });
 			}
-			//only the owner of account and the moderateur can user's account
+			// only the owner of account and the moderateur can delete account
 			if (user.id !== req.auth.userId && req.admin.isAdmin === false) {
 				return res.status(403).json({ message: "Requête non autorisée !!!" });
 			} else {
-				user
-					.destroy()
-					.then(() => {
-						res.status(200).json({ message: "Compte supprimé avec succés" });
-					})
-					.catch((err) => res.satus(400).json({ err }));
+				const dirname = user.id;
+				fs.rmdir(
+					`public/postPic/picOf-${dirname}`,
+					{ recursive: true, force: true },
+					() => {
+						fs.rmdir(
+							`public/profilPic/picOf-${dirname}`,
+							{ recursive: true, force: true },
+							() => {
+								user
+									.destroy()
+									.then(() => {
+										res
+											.status(200)
+											.json({ message: "Compte supprimé avec succés" });
+									})
+									.catch((err) => res.satus(400).json({ err }));
+							}
+						);
+					}
+				);
 			}
 		})
 		.catch((err) => res.status(500).json({ err }));
@@ -169,9 +188,9 @@ exports.updateAvatar = (req, res) => {
 			}
 			user
 				.update({
-					avatar: `${req.protocol}://${req.get("host")}/public/profilPic/${
-						req.file.filename
-					}`,
+					avatar: `${req.protocol}://${req.get(
+						"host"
+					)}/public/profilPic/picOf-${req.auth.userId}/${req.file.filename}`,
 				})
 				.then(() =>
 					res.status(200).json({ message: "avatar mis à jour avec succés ! " })
