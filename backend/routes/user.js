@@ -30,6 +30,8 @@ router.put(
 	inputsValidation.password,
 	userCtrl.updateLogin
 );
+//update job
+router.put("/job/update/:id", auth, inputsValidation.job, userCtrl.updateJob);
 //update avatar
 router.put("/avatar/update/:id", auth, multer_avatar, userCtrl.updateAvatar);
 //get 1 user

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import IndexProfil from "../components/profil/Index";
 
 const Profil = () => {
 	return (
-		<div>
-			<h1>hello from profil</h1>
+		<div className="profil-page">
+			<IndexProfil updateProfil={false} profil={true} />
 		</div>
 	);
 };

@@ -1,0 +1,110 @@
+.profil-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profil-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // width: 50%;
+    width: 100%;
+}
+
+.update-container {
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgb(250, 247, 247);
+
+    @include mobile-only {
+        width: 100%;
+    }
+
+    // border-radius: 100%;
+
+    .pic-container {
+        width: 45%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 100%;
+        // position: relative;
+
+        @include mobile-only {
+            height: 25%;
+            width: 100%;
+        }
+
+
+        img {
+            object-fit: cover;
+            border-radius: 100%;
+            background: radial-gradient(red, blue);
+            width: 300px;
+            height: 300px;
+
+            @include mobile-only {
+
+                width: 200px;
+                height: 200px;
+            }
+        }
+    }
+}
+
+
+
+
+.upload-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    input[type=file] {
+        background: $btn-active;
+        border-radius: 5px;
+        padding: 1em;
+        width: 100%;
+
+        @include mobile-only {
+            width: 100%;
+        }
+    }
+}
+
+#profil-list {
+    display: flex;
+    justify-content: center;
+    background: red;
+    width: 100%;
+    height: 60px;
+
+    ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background: yellow;
+        width: 50%;
+
+
+
+    }
+}
+
+#UserPost {
+    background: red;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}

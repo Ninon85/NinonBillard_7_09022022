@@ -172,6 +172,29 @@ exports.updateLogin = (req, res) => {
 		})
 		.catch((err) => res.status(500).json({ err }));
 };
+//update job
+exports.updateJob = (req, res) => {
+	db.User.findOne({
+		where: {
+			id: req.params.id,
+		},
+	})
+		.then((user) => {
+			if (!user) {
+				return res.status(400).json({ message: "Utilisateur inconnu !" });
+			}
+			//only the owner of account and the moderateur can modify email address
+			if (req.auth.userId !== user.id && req.admin.isAdmin === false) {
+				return res.status(403).json({ message: "Requête non autorisée" });
+			}
+
+			user
+				.update({ job: req.body.job })
+				.then(() => res.status(200).json({ job: req.body.job }))
+				.catch((err) => res.status(500).json({ err }));
+		})
+		.catch((err) => res.status(500).json({ err }));
+};
 exports.updateAvatar = (req, res) => {
 	db.User.findOne({
 		where: {

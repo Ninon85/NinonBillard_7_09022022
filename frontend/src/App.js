@@ -10,12 +10,18 @@ import Profil from "./pages/Profil";
 // import Navbar from "./components/Navbar";
 import Navbar from "./components/Navbar";
 import { UserIdContext } from "./components/AppContext";
+import { useDispatch } from "react-redux";
+import { getUser } from "./actions/user.actions";
 const App = () => {
 	const [uId, setUid] = useState(null);
+	const dispatch = useDispatch();
 	useEffect(() => {
-		setUid(localStorage.getItem("token"));
+		setUid(localStorage.getItem("id"));
 		// console.log(uId);
-	}, []);
+		if (uId) {
+			dispatch(getUser(uId));
+		}
+	}, [uId]);
 	return (
 		<UserIdContext.Provider value={uId}>
 			<BrowserRouter>

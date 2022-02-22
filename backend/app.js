@@ -46,6 +46,6 @@ app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
 app.use("/api/post", likeRoutes);
 app.use("/api/comment", commentRoutes);
-app.use("/images", express.static(path.join(__dirname, "public")));
+app.use("/public", express.static(path.join(__dirname, "public")));
 // export app, now we can use this app from the other files of the project
 module.exports = app;
