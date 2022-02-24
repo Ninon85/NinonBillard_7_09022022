@@ -12,18 +12,23 @@ exports.likeStatus = (req, res, next) => {
 				})
 					.then(() =>
 						res.status(200).json({
-							message: "Vous avez unlike le post !",
+							...req.body,
+							postId: parseInt(req.params.id),
+							userId: req.auth.userId,
 						})
 					)
 					.catch((err) => res.status(400).json(err));
 				//if userId isn't in the array like +1
 			} else {
-				db.Like.create({
-					postId: req.params.id,
+				const newLike = {
+					...req.body,
+					postId: parseInt(req.params.id),
 					userId: req.auth.userId,
-					likes: req.body.likes,
+				};
+				db.Like.create({
+					...newLike,
 				})
-					.then(() => res.status(201).json({ message: "Like enregistré" }))
+					.then(() => res.status(201).json(newLike))
 					.catch((err) => res.status(400).json({ err }));
 			}
 		})

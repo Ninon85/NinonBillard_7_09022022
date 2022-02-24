@@ -55,6 +55,7 @@ nav {
             align-items: center;
             justify-content: center;
             height: 100%;
+            width: 50px;
 
 
             a {
@@ -65,6 +66,12 @@ nav {
                 color: rgb(253, 251, 251);
             }
 
+
+
         }
+    }
+
+    .fa-sign-out-alt {
+        font-size: 1.2em;
     }
 }

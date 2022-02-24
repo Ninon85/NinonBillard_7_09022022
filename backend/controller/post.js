@@ -11,14 +11,14 @@ exports.createPost = (req, res, next) => {
 				...JSON.parse(req.body.post),
 				attachment: `${req.protocol}://${req.get(
 					"host"
-				)}/public/postPic/picOf-${req.body.post.userId}/${req.file.filename}`,
+				)}/public/postPic/picOf-${req.auth.userId}/${req.file.filename}`,
 		  }
 		: { ...req.body };
 	if (newPost.userId !== req.auth.userId) {
 		return res.status(403).json({ message: "Requête non autorisée !!" });
 	}
 	db.Post.create({ ...newPost })
-		.then(() => res.status(201).json({ message: "Post crée" }))
+		.then(() => res.status(201).json(newPost))
 		.catch((err) => res.status(400).json({ err }));
 	// console.log(postObject);
 };
@@ -57,7 +57,7 @@ exports.updatePost = (req, res) => {
 				...JSON.parse(req.body.post),
 				attachment: `${req.protocol}://${req.get(
 					"host"
-				)}/public/postPic/picOf-${req.body.post.userId}/${req.file.filename}`,
+				)}/public/postPic/picOf-${req.auth.userId}/${req.file.filename}`,
 		  }
 		: { ...req.body };
 	db.Post.findOne({
@@ -78,15 +78,16 @@ exports.updatePost = (req, res) => {
 				fs.unlinkSync(`public/postPic/${post.userId}/${imageToDelete}`);
 			}
 			db.Post.update({ ...postUpdate }, { where: { id: req.params.id } })
-				.then(() => res.status(200).json({ message: "Post mis à jour !" }))
+				.then(() => res.status(200).json(postUpdate)) //
 				.catch((err) => res.status(400).json({ err }));
 		})
 		.catch((err) => res.status(500).json({ err }));
 };
-//get all posts with owner and post's likes
+//get all posts with owner and post's likes and comments
+
 exports.getAllPost = (req, res) => {
 	db.Post.findAll({
-		include: [{ model: db.User }, { model: db.Like }],
+		include: [{ model: db.User }, { model: db.Like }, { model: db.Comment }],
 		//du plus recent au plus ancien
 		order: [["id", "DESC"]],
 	})

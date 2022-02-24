@@ -16,12 +16,13 @@ const App = () => {
 	const [uId, setUid] = useState(null);
 	const dispatch = useDispatch();
 	useEffect(() => {
-		setUid(localStorage.getItem("id"));
-		// console.log(uId);
+		setUid(parseInt(localStorage.getItem("id")));
+
 		if (uId) {
 			dispatch(getUser(uId));
 		}
-	}, [uId]);
+	}, [uId, dispatch]);
+	console.log(typeof uId);
 	return (
 		<UserIdContext.Provider value={uId}>
 			<BrowserRouter>

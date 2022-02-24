@@ -1,7 +1,6 @@
 import React from "react";
 //font awesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+
 const logout = () => {
 	localStorage.clear();
 	window.location = "/";
@@ -9,7 +8,7 @@ const logout = () => {
 const Logout = () => {
 	return (
 		<li onClick={logout}>
-			<FontAwesomeIcon icon={faRightFromBracket} title="Vous déconnecter" />
+			<i className="fas fa-sign-out-alt" title="Déconnexion"></i>
 		</li>
 	);
 };

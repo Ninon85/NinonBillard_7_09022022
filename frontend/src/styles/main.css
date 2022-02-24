@@ -32,12 +32,91 @@ input[type=submit] {
   border-radius: 5px;
 }
 
+.fa-heart {
+  cursor: pointer;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 200;
+  font-size: 1.5em;
+}
+
+.heart-checked {
+  font-family: "Font Awesome 5 free";
+  font-size: 1.5em;
+  content: "\f004";
+  font-weight: 900;
+  color: transparent;
+  background: -webkit-gradient(linear, left bottom, left top, from(#bd1c1c), to(#fd0303));
+  background: linear-gradient(to top, #bd1c1c, #fd0303);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-transition-duration: 500ms;
+          transition-duration: 500ms;
+  -webkit-transition-delay: 10ms;
+          transition-delay: 10ms;
+}
+
 .avatar-min {
   -o-object-fit: cover;
      object-fit: cover;
-  height: 80%;
+  height: 50px;
+  width: 50px;
   border-radius: 100%;
   background: radial-gradient(red, blue);
+}
+
+.fa-spinner {
+  font-size: 1.5em;
+}
+
+.card-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  margin: 5px 0 5px 0;
+}
+
+.card-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.card-contents {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.card-contents .card-picture {
+  border-radius: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+}
+
+.card-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 nav {
@@ -113,6 +192,7 @@ nav ul li {
       -ms-flex-pack: center;
           justify-content: center;
   height: 100%;
+  width: 50px;
 }
 
 nav ul li a {
@@ -127,6 +207,10 @@ nav ul li a {
           justify-content: center;
   height: 100%;
   color: #fdfbfb;
+}
+
+nav .fa-sign-out-alt {
+  font-size: 1.2em;
 }
 
 .home-page {
@@ -378,5 +462,34 @@ nav ul li a {
 
 .hidden {
   display: none;
+}
+
+.feed {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.feed .feed-main {
+  width: 50%;
+}
+
+.thread-container {
+  width: 100%;
+}
+
+.thread-container ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 /*# sourceMappingURL=main.css.map */

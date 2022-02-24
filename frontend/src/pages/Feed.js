@@ -1,9 +1,12 @@
 import React from "react";
+import Thread from "../components/Thread";
 
 const Feed = () => {
 	return (
-		<div>
-			<h1>Fil d'actualité</h1>
+		<div className="feed">
+			<main className="feed-main">
+				<Thread />
+			</main>
 		</div>
 	);
 };

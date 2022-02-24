@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import IndexProfil from "../components/profil/Index";
 
 const Profil = () => {

@@ -1,0 +1,21 @@
+.feed {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .feed-main {
+        width: 50%;
+
+    }
+}
+
+.thread-container {
+    width: 100%;
+
+    ul {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+    }
+}
