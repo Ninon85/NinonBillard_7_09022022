@@ -33,6 +33,20 @@
 .card-footer {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+}
+
+.comment-icon,
+.like-container {
+    display: flex;
+    width: 3em;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.edit-ctrl-container {
+    display: flex;
+    justify-content: space-between;
 }
 
 // .card_content {

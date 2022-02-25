@@ -34,12 +34,12 @@ exports.deletePost = (req, res) => {
 			if (post.userId !== req.auth.userId && req.admin.isAdmin === false) {
 				return res.status(403).json({ message: "Requête non autorisée !!" });
 			}
-			if (post.attachment) {
+			if (post.attachment && post.attachment !== "") {
 				//supprimer images eventuelles du post
 				const imageToDelete = post.attachment.split(
 					`/public/postPic/picOf-${post.userId}`
 				)[1];
-				fs.unlink(`public/postPic/${post.userId}/${imageToDelete}`, () =>
+				fs.unlink(`public/postPic/picOf-${post.userId}/${imageToDelete}`, () =>
 					console.log("image supprimée")
 				);
 			}
@@ -70,15 +70,17 @@ exports.updatePost = (req, res) => {
 			if (req.auth.userId !== post.userId) {
 				return res.status(403).json({ message: "Requête non autorisée !!" });
 			}
-			if (req.file && post.attachment) {
+			if (req.file && post.attachment !== "") {
 				//delete the old picture
 				const imageToDelete = post.attachment.split(
-					`/public/postPic/${post.userId}`
+					`/public/postPic/picOf-${post.userId}`
 				)[1];
-				fs.unlinkSync(`public/postPic/${post.userId}/${imageToDelete}`);
+				fs.unlinkSync(`public/postPic/picOf-${post.userId}/${imageToDelete}`);
 			}
 			db.Post.update({ ...postUpdate }, { where: { id: req.params.id } })
-				.then(() => res.status(200).json(postUpdate)) //
+				.then(() =>
+					res.status(200).json({ ...postUpdate, id: parseInt(req.params.id) })
+				) //
 				.catch((err) => res.status(400).json({ err }));
 		})
 		.catch((err) => res.status(500).json({ err }));
@@ -92,5 +94,12 @@ exports.getAllPost = (req, res) => {
 		order: [["id", "DESC"]],
 	})
 		.then((posts) => res.status(200).json(posts))
+		.catch((error) => res.status(400).json({ error }));
+};
+exports.getAPost = (req, res) => {
+	db.Post.findOne({
+		where: { id: req.params.id },
+	})
+		.then((post) => res.status(200).json(post))
 		.catch((error) => res.status(400).json({ error }));
 };

@@ -13,6 +13,8 @@ router.post(
 );
 //get all post whith owner and like post
 router.get("/", auth, postCtrl.getAllPost);
+//get 1 post
+router.get("/:id", auth, postCtrl.getAPost);
 //update 1 post auth,
 router.put(
 	"/:id",

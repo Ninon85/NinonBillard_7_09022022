@@ -1,4 +1,11 @@
-import { GET_POSTS, LIKE_POST, UNLIKE_POST } from "../../actions/post.actions";
+import {
+	GET_POSTS,
+	LIKE_POST,
+	UNLIKE_POST,
+	UPDATE_POST_CONTENT,
+	UPDATE_POST_PIC,
+	DELETE_POST,
+} from "../../actions/post.actions";
 
 const initaialState = {};
 export default function postReducer(state = initaialState, action) {
@@ -28,6 +35,30 @@ export default function postReducer(state = initaialState, action) {
 				}
 				return post;
 			});
+
+		case UPDATE_POST_CONTENT:
+			return state.map((post) => {
+				if (post.id === action.payload.id) {
+					return {
+						...post,
+						content: action.payload.content,
+					};
+				}
+				return post;
+			});
+		case UPDATE_POST_PIC:
+			return state.map((post) => {
+				if (post.id === action.payload.id) {
+					return {
+						...post,
+						attachment: action.payload.attachment,
+					};
+				}
+				return post;
+			});
+
+		case DELETE_POST:
+			return state.filter((post) => post.id !== action.payload.postId);
 		default:
 			return state;
 	}

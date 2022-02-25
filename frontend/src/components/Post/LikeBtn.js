@@ -35,6 +35,7 @@ const LikeBtn = ({ post }) => {
 					title="Like"
 				></i>
 			)}
+			<span>{post.Likes.length}</span>
 		</div>
 	);
 };

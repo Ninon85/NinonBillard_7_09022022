@@ -119,7 +119,7 @@ exports.login = (req, res) => {
 //get 1 user
 exports.getOneUser = (req, res) => {
 	db.User.findOne({
-		attributes: { exclude: ["password", "isAdmin"] },
+		attributes: { exclude: ["password"] },
 		where: { id: req.params.id },
 	})
 		.then((user) => {
