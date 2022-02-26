@@ -1,2 +1,4 @@
+ignore all * exception !
 *
 !.gitignore
+!picOf-1

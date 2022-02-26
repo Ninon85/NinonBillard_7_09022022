@@ -15,7 +15,6 @@ exports.createUser = (req, res) => {
 					"host"
 				)}/public/defaultPicture/random-user.png`,
 				job: req.body.job,
-				// isAdmin: req.body.isAdmin,
 			})
 				.then((user) => {
 					const dirname = "picOf-" + user.id;

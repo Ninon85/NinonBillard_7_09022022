@@ -1,0 +1,25 @@
+
+
+{
+    "development": {
+      "username": "developer",
+      "password": "VotreMotDePasse",
+      "database": "NomDeLaBdd",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    },
+    "test": {
+      "username": "developer",
+      "password": "VotreMotDePasse",
+      "database": "NomDeLaBdd",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    },
+    "production": {
+      "username": "developer",
+      "password": "VotreMotDePasse",
+      "database": "NomDeLaBdd",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    }
+  }

@@ -10,7 +10,7 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 
-❗❗ run the backend before then run the frontend
+❗❗ the front will be run on port 3001, you can change port on .env file ‼❗‼❗
 
 <!-- Open [http://localhost:3000](http://localhost:3000) to view it in your browser. -->
 
