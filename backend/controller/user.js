@@ -135,7 +135,7 @@ exports.getAllUsers = (req, res, next) => {
 	db.User.findAll({
 		attributes: { exclude: ["password", "isAdmin"] },
 	})
-		.then((users) => res.status(200).json({ users }))
+		.then((users) => res.status(200).json(users))
 		.catch((err) => res.status(400).json({ err }));
 };
 //update email

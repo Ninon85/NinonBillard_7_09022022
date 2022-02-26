@@ -1,14 +1,6 @@
 const multer = require("multer");
 
-// dictionary
-const MIME_TYPES = {
-	"image/jpg": "jpg",
-	"image/jpeg": "jpg",
-	"image/png": "png",
-	"image/gif": "gif",
-};
-
-//objet de configuration pour multer
+//objet de configuration pour multer (destination/file name)
 const storage = multer.diskStorage({
 	destination: (req, file, callback) => {
 		callback(null, `public/postPic/picOf-${req.auth.userId}`);
@@ -16,10 +8,30 @@ const storage = multer.diskStorage({
 	filname: (req, file, callback) => {
 		const name = file.originalname.split(" ").join("_");
 
-		const extension = MIME_TYPES[file.mimetype];
+		const extension = file.mimetype.split("/")[1];
 		callback(null, name + Date.now() + "." + extension);
 	},
 });
+const upload = multer({
+	//multer settings
+	storage: storage,
+	fileFilter: function (req, file, callback) {
+		const ext = file.mimetype.split("/")[1];
+		if (ext !== "png" && ext !== "jpg" && ext !== "gif" && ext !== "jpeg") {
+			return callback({
+				message: "Seules les images png, jpg, gif et jpeg sont accéptées",
+			});
+		} else {
+			callback(null, true);
+		}
+	},
+	//1 Mo => 1 048 576 octets
+	// 3.5 => 3670016
+	limits: {
+		fileSize: 3670016,
+	},
+}).single("image");
 
-//exportation de multer avec comme objet storage, il s'agit d'un fichier unique et image uniquement
-module.exports = multer({ storage }).single("image");
+module.exports = (req, res, next) => {
+	upload(req, res, (err) => (err ? res.status(400).json(err) : next()));
+};

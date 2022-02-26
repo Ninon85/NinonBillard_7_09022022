@@ -144,6 +144,20 @@ input[type=submit] {
           justify-content: space-between;
 }
 
+.comment-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.comment-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
 nav {
   display: -webkit-box;
   display: -ms-flexbox;

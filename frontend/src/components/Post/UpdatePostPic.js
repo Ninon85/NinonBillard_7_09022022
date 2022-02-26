@@ -29,17 +29,13 @@ const UpdatePostPic = ({ post }) => {
 				<div>
 					<i
 						className="fa fa-file-image-o"
+						title="Modifier l'image"
 						onClick={() => setUpdatedPic(!updatedPic)}
 					></i>
 				</div>
 			) : (
 				<>
-					<div>
-						<i
-							className="fa fa-file-image-o"
-							onClick={() => setUpdatedPic(!updatedPic)}
-						></i>
-					</div>
+					<div onClick={() => setUpdatedPic(!updatedPic)}>Annuler</div>
 					<form action="" onSubmit={handlePicture} className="upload-avatar">
 						<label htmlFor="image">Changer d'image</label>
 						<input

@@ -4,7 +4,7 @@ const db = require("../models");
 exports.createComment = (req, res) => {
 	const comment = { ...req.body };
 	db.Comment.create({ ...comment })
-		.then(() => res.status(201).json({ message: "commentaire crée !" }))
+		.then(() => res.status(201).json(comment))
 		.catch((err) => res.status(400).json(err));
 };
 //get all comments of a post with owner of comment

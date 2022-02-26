@@ -89,7 +89,11 @@ exports.updatePost = (req, res) => {
 
 exports.getAllPost = (req, res) => {
 	db.Post.findAll({
-		include: [{ model: db.User }, { model: db.Like }, { model: db.Comment }],
+		include: [
+			{ model: db.User },
+			{ model: db.Like },
+			{ model: db.Comment, order: [["id", "ASC"]] },
+		],
 		//du plus recent au plus ancien
 		order: [["id", "DESC"]],
 	})

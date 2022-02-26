@@ -4,9 +4,11 @@ import { updatePostContent } from "../../actions/post.actions";
 
 import { UserIdContext } from "../AppContext";
 import { isEmpty } from "../Utils";
+
 import DeleteCard from "./DeleteCard";
 import LikeBtn from "./LikeBtn";
 import UpdatePostPic from "./UpdatePostPic";
+import CardComments from "./CardComments";
 
 const Card = ({ post }) => {
 	// console.log(post);
@@ -17,6 +19,7 @@ const Card = ({ post }) => {
 	const [isUpdated, setIsUpdated] = useState(false);
 	const [textUpdate, setTextUpdate] = useState(null);
 	const [adminUser, setAdminUser] = useState(false);
+	const [showComments, setShowComments] = useState(true);
 	const userData = useSelector((state) => state.userReducer);
 
 	const updateText = () => {
@@ -84,9 +87,7 @@ const Card = ({ post }) => {
 										></i>
 									</div>
 								</div>
-								{/* <div className="btn-container"> */}
-								<UpdatePostPic post={post} />
-								{/* </div> */}
+								{post.attachment !== "" && <UpdatePostPic post={post} />}
 							</>
 						)}
 						{userData.id === post.userId || adminUser ? (
@@ -96,12 +97,19 @@ const Card = ({ post }) => {
 						) : null}
 					</div>
 					<div className="card-footer">
-						<div className="comment-icon">
-							<i className="fas fa-comment-dots" title="Commenter"></i>
+						<div
+							className="comment-icon"
+							onClick={() => setShowComments(!showComments)}
+						>
+							<i
+								className="fas fa-comment-dots"
+								title="Voir les commentaires"
+							></i>
 							<span>{post.Comments.length}</span>
 						</div>
 						<LikeBtn post={post} />
 					</div>
+					{showComments && <CardComments post={post} />}
 				</>
 			)}
 		</li>
