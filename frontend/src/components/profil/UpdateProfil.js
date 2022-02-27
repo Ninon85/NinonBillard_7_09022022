@@ -28,7 +28,10 @@ const UpdateProfil = () => {
 				<h1>{userData.username}</h1>
 				<section className="update-container">
 					<div className="pic-container">
-						<img src={userData.avatar} alt=" profil" />
+						<img
+							src={userData.avatar}
+							alt={"Photo de profil de " + userData.username}
+						/>
 						<UploadAvatar />
 					</div>
 					<div className="job-update">

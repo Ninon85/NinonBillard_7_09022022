@@ -146,7 +146,7 @@ exports.updateLogin = (req, res) => {
 	})
 		.then((user) => {
 			if (!user) {
-				return res.status(400).json({ message: "Utilisateur inconnu !" });
+				return res.status(404).json({ message: "Utilisateur inconnu !" });
 			}
 			//only the owner of account and the moderateur can modify email address
 			if (req.auth.userId !== user.id && req.admin.isAdmin === false) {

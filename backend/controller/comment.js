@@ -23,6 +23,21 @@ exports.getAllCommentPost = (req, res) => {
 		.catch((error) => res.status(400).json({ error }));
 };
 //modify
+exports.updateComment = (req, res) => {
+	db.Comment.findOne({
+		where: {
+			id: req.params.id,
+		},
+	}).then((comment) => {
+		if (!comment)
+			return res.status(404).json({ message: "Commentaire inconnu !" });
+		if (req.auth.userId !== comment.userId)
+			return res.status(403).json({ message: "Requête non autorisée" });
+		comment
+			.update({ content: req.body.content })
+			.then(() => res.status(200).json(req.body.content));
+	});
+};
 //verifier que le user est le proprietaire du com
 
 //delete

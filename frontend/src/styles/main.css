@@ -55,6 +55,10 @@ input[type=submit] {
           transition-delay: 10ms;
 }
 
+#image-upload {
+  display: none;
+}
+
 .avatar-min {
   -o-object-fit: cover;
      object-fit: cover;
@@ -156,6 +160,13 @@ input[type=submit] {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+}
+
+.pre-render-pic {
+  border-radius: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
 }
 
 nav {

@@ -5,6 +5,8 @@ import {
 	UPDATE_POST_CONTENT,
 	UPDATE_POST_PIC,
 	DELETE_POST,
+	DELETE_COMMENT,
+	UPDATE_COMMENT,
 } from "../../actions/post.actions";
 
 const initaialState = {};
@@ -59,6 +61,36 @@ export default function postReducer(state = initaialState, action) {
 
 		case DELETE_POST:
 			return state.filter((post) => post.id !== action.payload.postId);
+		case DELETE_COMMENT:
+			return state.map((post) => {
+				if (post.id === action.payload.postId) {
+					return {
+						...post,
+						Comments: post.Comments.filter(
+							(comment) => comment.id !== action.payload.commentId
+						),
+					};
+				}
+				return post;
+			});
+		case UPDATE_COMMENT:
+			return state.map((post) => {
+				if (post.id === action.payload.postId) {
+					return {
+						...post,
+						Comments: post.Comments.map((comment) => {
+							if (comment.id === action.payload.commentId) {
+								return {
+									...comment,
+									content: action.payload.content,
+								};
+							} else return comment;
+						}),
+					};
+				}
+				return post;
+			});
+
 		default:
 			return state;
 	}

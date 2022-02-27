@@ -24,8 +24,6 @@ input[type=submit] {
 }
 
 .heart-checked {
-
-
     font-family: "Font Awesome 5 free";
     font-size: 1.5em;
     content: "\f004";
@@ -36,4 +34,8 @@ input[type=submit] {
     -webkit-background-clip: text;
     transition-duration: 500ms;
     transition-delay: 10ms;
+}
+
+#image-upload {
+    display: none;
 }

@@ -11,7 +11,7 @@ import UpdatePostPic from "./UpdatePostPic";
 import CardComments from "./CardComments";
 
 const Card = ({ post }) => {
-	// console.log(post);
+	// console.log(post.Comments.length);
 	const dispatch = useDispatch();
 	const uId = useContext(UserIdContext);
 	//is loading ? true
@@ -19,7 +19,7 @@ const Card = ({ post }) => {
 	const [isUpdated, setIsUpdated] = useState(false);
 	const [textUpdate, setTextUpdate] = useState(null);
 	const [adminUser, setAdminUser] = useState(false);
-	const [showComments, setShowComments] = useState(true);
+	const [showComments, setShowComments] = useState(false);
 	const userData = useSelector((state) => state.userReducer);
 
 	const updateText = () => {
