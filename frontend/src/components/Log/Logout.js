@@ -7,7 +7,7 @@ const logout = () => {
 };
 const Logout = () => {
 	return (
-		<li onClick={logout}>
+		<li onClick={logout} tabIndex={0} onKeyPress={logout}>
 			<i className="fas fa-sign-out-alt" title="Déconnexion"></i>
 		</li>
 	);

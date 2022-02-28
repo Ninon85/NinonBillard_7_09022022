@@ -10,6 +10,12 @@ const DeleteCard = ({ id }) => {
 
 	return (
 		<div
+			tabIndex={0}
+			onKeyPress={() => {
+				if (window.confirm("Voulez vous vraiment supprimer ce post ?")) {
+					deleteArticle();
+				}
+			}}
 			onClick={() => {
 				if (window.confirm("Voulez vous vraiment supprimer ce post ?")) {
 					deleteArticle();

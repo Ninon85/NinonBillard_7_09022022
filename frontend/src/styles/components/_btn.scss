@@ -34,8 +34,10 @@ input[type=submit] {
     -webkit-background-clip: text;
     transition-duration: 500ms;
     transition-delay: 10ms;
+
+
 }
 
 #image-upload {
-    display: none;
+    visibility: hidden;
 }

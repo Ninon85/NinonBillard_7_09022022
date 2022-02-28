@@ -3,8 +3,11 @@ const fs = require("fs");
 
 exports.createPost = (req, res, next) => {
 	// console.log(req);
-	if (req.body.content === " " && !req.file) {
-		return res.status(400).json({ message: "Un post ne peut pas être vide" });
+	if (req.body.content === "" && !req.file) {
+		return res.status(400).json({
+			message:
+				"Un post ne peut pas être vide et ne peut pas contenir uniquement des caractères spéciaux, seuls les emoticons sont accéptés",
+		});
 	}
 	const newPost = req.file
 		? {
@@ -15,7 +18,7 @@ exports.createPost = (req, res, next) => {
 		  }
 		: { ...req.body };
 	if (newPost.userId !== req.auth.userId) {
-		return res.status(403).json({ message: "Requête non autorisée !!" });
+		return res.status(403).json({ message: "Requête non autorisée !! ❗" });
 	}
 	db.Post.create({ ...newPost })
 		.then(() => res.status(201).json(newPost))
@@ -60,6 +63,12 @@ exports.updatePost = (req, res) => {
 				)}/public/postPic/picOf-${req.auth.userId}/${req.file.filename}`,
 		  }
 		: { ...req.body };
+	if (postUpdate.content === "" && !req.file) {
+		return res.status(400).json({
+			message:
+				"Un post ne peut pas être vide et ne peut pas contenir uniquement des caractères spéciaux, seuls les emoticons sont accéptés",
+		});
+	}
 	db.Post.findOne({
 		where: { id: req.params.id },
 	})

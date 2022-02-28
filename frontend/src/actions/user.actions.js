@@ -3,7 +3,11 @@ export const GET_USER = "GET_USER";
 export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
 export const UPDATE_JOB = "UPDATE_JOB";
 export const UPDATE_EMAIL = "UPDATE_EMAIL";
-
+//errors
+export const UPLOAD_ERRORS = "UPLOAD_ERRORS";
+export const UPLOAD_PICTURE_ERRORS = "UPLOAD_PICTURE_ERRORS";
+export const UPDATE_JOB_ERRORS = "UPDATE_JOB_ERRORS";
+export const UPDATE_EMAIL_ERRORS = "UPDATE_EMAIL_ERRORS";
 //get a user from db
 //id of user
 export const getUser = (uId) => {
@@ -42,9 +46,13 @@ export const uploadPicture = (data, id) => {
 					},
 				}).then((res) => {
 					dispatch({ type: UPLOAD_PICTURE, payload: res.data.avatar });
+					dispatch({ type: UPLOAD_ERRORS, payload: "" });
 				});
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				console.log(err);
+				dispatch({ type: UPLOAD_ERRORS, payload: err.response.data });
+			});
 	};
 };
 export const updateJob = (job, id) => {
@@ -59,8 +67,12 @@ export const updateJob = (job, id) => {
 		})
 			.then((res) => {
 				dispatch({ type: UPDATE_JOB, payload: job });
+				// dispatch({ type: UPDATE_JOB_ERRORS, payload: "" });
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				console.log(err);
+				dispatch({ type: UPDATE_JOB_ERRORS, payload: err.response.data });
+			});
 	};
 };
 export const updateMail = (email, password, id) => {

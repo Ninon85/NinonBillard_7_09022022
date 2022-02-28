@@ -9,40 +9,52 @@ import {
 const NewPostForm = () => {
 	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(true);
-	const [text, setText] = useState("");
+	const [content, setContent] = useState("");
+	const [press, setPress] = useState(false);
 	//to send to DB
 	const [file, setFile] = useState();
 	// for pré render
 	const [postPic, setPostPic] = useState(null);
 	const userData = useSelector((state) => state.userReducer);
+	const error = useSelector((state) => state.errorReducer);
+
 	useEffect(() => {
 		if (userData !== null) setIsLoading(false);
 	}, [userData]);
 	const newPost = {
 		userId: userData.id,
-		content: text,
+		content,
 		attachment: "",
 	};
 	const handlePost = () => {
-		const data = new FormData();
-		// if (file) {
-		data.append("post", JSON.stringify(newPost));
-		data.append("image", file);
-		dispatch(createPostWithPic(data)).then(() => {
-			dispatch(getPosts());
-			cancelPost();
-		});
-		// } else {
-		// 	dispatch(createPostContent(userData.id, text));
-		// }
+		if (file) {
+			const data = new FormData();
+			data.append("post", JSON.stringify(newPost));
+			data.append("image", file);
+			dispatch(createPostWithPic(data)).then(() => {
+				dispatch(getPosts());
+				cancelPost();
+			});
+		} else if (content) {
+			dispatch(createPostContent(userData.id, content)).then(() => {
+				dispatch(getPosts());
+				cancelPost();
+			});
+		}
 	};
 	const handlePicture = (e) => {
 		setPostPic(URL.createObjectURL(e.target.files[0]));
 	};
 	const cancelPost = () => {
-		setText("");
+		setContent("");
 		setPostPic("");
 		setFile("");
+	};
+	const onUploadLabel = (e) => {
+		const keyCode = e.which || e.keyCode;
+		if (keyCode === 13) {
+			e.target.click();
+		}
 	};
 	return (
 		<div className="post-form-container">
@@ -62,13 +74,17 @@ const NewPostForm = () => {
 							name="content-post"
 							id="content-post"
 							placeholder={"Que voulez-vous dire " + userData.username + " ?"}
-							onChange={(e) => setText(e.target.value)}
-							value={text}
+							onChange={(e) => setContent(e.target.value)}
+							value={content}
 						/>
 
 						<div className="footer-form">
 							<div className="icon-container">
-								<label htmlFor="image-upload">
+								<label
+									htmlFor="image-upload"
+									tabIndex={0}
+									onKeyPress={onUploadLabel}
+								>
 									<i
 										className="fa fa-file-image-o"
 										title="Télécharger une image"
@@ -85,7 +101,7 @@ const NewPostForm = () => {
 										setFile(e.target.files[0]);
 									}}
 								/>
-								{text || postPic ? (
+								{content || postPic ? (
 									<ul>
 										<li className="pre-render">
 											<div className="avatar-container">
@@ -99,7 +115,7 @@ const NewPostForm = () => {
 												<div className="pré-render-header">
 													<h3>{userData.username}</h3>
 												</div>
-												<div className="pre-render-content"> {text}</div>
+												<div className="pre-render-content"> {content}</div>
 												<img className="pre-render-pic" src={postPic} alt="" />
 											</div>
 										</li>
@@ -107,16 +123,25 @@ const NewPostForm = () => {
 								) : null}
 							</div>
 							<div className="btn-send-form-container">
-								{text || postPic ? (
+								{content || postPic ? (
 									<>
-										<button className="cancel" onClick={cancelPost}>
+										<button
+											className="cancel"
+											onKeyPress={cancelPost}
+											onClick={cancelPost}
+										>
 											Annuler
 										</button>
-										<button className="send" onClick={handlePost}>
+										<button
+											className="send"
+											onKeyPress={handlePost}
+											onClick={handlePost}
+										>
 											Envoyer
 										</button>
 									</>
 								) : null}
+								{/* {error.postErrors.message && <p>{error.postErrors.message}</p>} */}
 							</div>
 						</div>
 					</div>

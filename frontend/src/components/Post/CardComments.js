@@ -22,7 +22,7 @@ const CardComments = ({ post }) => {
 		<div className="comments-container">
 			{post.Comments.map((comment) => {
 				return (
-					<div
+					<article
 						className={
 							comment.userId === userData.id
 								? "comment-container-owner"
@@ -70,7 +70,7 @@ const CardComments = ({ post }) => {
 								</div>
 							</div>
 						</div>
-					</div>
+					</article>
 				);
 			})}
 			{userData.id && (

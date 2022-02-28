@@ -56,7 +56,7 @@ input[type=submit] {
 }
 
 #image-upload {
-  display: none;
+  visibility: hidden;
 }
 
 .avatar-min {

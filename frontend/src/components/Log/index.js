@@ -19,6 +19,8 @@ const Log = (props) => {
 			<div className="form-container">
 				<ul>
 					<li
+						tabIndex={0}
+						onKeyPress={handleModals}
 						onClick={handleModals}
 						id="signup"
 						className={signUpModal ? "active-btn" : null}
@@ -26,6 +28,8 @@ const Log = (props) => {
 						S'inscrire
 					</li>
 					<li
+						tabIndex={0}
+						onKeyPress={handleModals}
 						onClick={handleModals}
 						id="login"
 						className={loginModal ? "active-btn" : null}

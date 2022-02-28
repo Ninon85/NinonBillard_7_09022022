@@ -2,6 +2,11 @@ const db = require("../models");
 
 //create
 exports.createComment = (req, res) => {
+	if (req.body.content.length === 0)
+		return res.status(400).json({
+			message:
+				"Saisie incorrecte, vous ne pouvez pas saisir uniquement des caractères spéciaux",
+		});
 	const comment = { ...req.body };
 	db.Comment.create({ ...comment })
 		.then(() => res.status(201).json(comment))
@@ -24,6 +29,12 @@ exports.getAllCommentPost = (req, res) => {
 };
 //modify
 exports.updateComment = (req, res) => {
+	if (req.body.content.length === 0) {
+		return res.status(400).json({
+			message:
+				"Un post ne peut pas être vide et ne peut pas contenir uniquement des caractères spéciaux, seuls les emoticons sont accéptés",
+		});
+	}
 	db.Comment.findOne({
 		where: {
 			id: req.params.id,

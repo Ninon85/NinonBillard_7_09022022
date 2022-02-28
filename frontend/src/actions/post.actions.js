@@ -12,6 +12,8 @@ export const CREATE_POST_CONTENT = "CREATE_POST_CONTENT";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 export const UPDATE_COMMENT = "UPDATE_COMMENT";
+//errors
+export const GET_POST_ERRORS = "GET_POST_ERRORS";
 
 export const getPosts = (num) => {
 	return (dispatch) => {
@@ -122,24 +124,27 @@ export const createPostWithPic = (data) => {
 	return (dispatch) => {
 		return axios({
 			method: "post",
-			url: `${process.env.REACT_APP_API_URL}api/post/`,
+			url: `${process.env.REACT_APP_API_URL}api/post`,
 			headers: {
 				authorization: `Bearer ${localStorage.getItem("token")}`,
 				"Content-Type": "multipart/form-data",
 			},
 			data,
 		})
-			.then((res) => {
-				dispatch({ type: CREATE_POST_WITH_PIC, payload: res.data });
-			})
-			.catch((err) => console.log(err));
+			.then((res) => dispatch({ type: GET_POST_ERRORS, payload: "" }))
+			.catch((err) => {
+				console.log(err.response);
+				if (err.response.data) {
+					dispatch({ type: GET_POST_ERRORS, payload: err.response.data });
+				}
+			});
 	};
 };
 export const createPostContent = (userId, content) => {
 	return (dispatch) => {
 		return axios({
 			method: "post",
-			url: `${process.env.REACT_APP_API_URL}api/post/`,
+			url: `${process.env.REACT_APP_API_URL}api/post`,
 			headers: {
 				authorization: `Bearer ${localStorage.getItem("token")}`,
 			},
@@ -149,10 +154,13 @@ export const createPostContent = (userId, content) => {
 				attachment: "",
 			},
 		})
-			.then((res) => {
-				dispatch({ type: CREATE_POST_CONTENT, payload: res.data });
-			})
-			.catch((err) => console.log(err));
+			.then((res) => dispatch({ type: GET_POST_ERRORS, payload: "" }))
+			.catch((err) => {
+				console.log(err.response);
+				if (err.response.data) {
+					dispatch({ type: GET_POST_ERRORS, payload: err.response.data });
+				}
+			});
 	};
 };
 //Comments
@@ -174,7 +182,7 @@ export const addComment = (userId, postId, content) => {
 			.then((res) => {
 				dispatch({ type: ADD_COMMENT, payload: res.data });
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => console.log(err.response));
 	};
 };
 export const deleteComment = (postId, commentId) => {

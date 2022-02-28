@@ -16,7 +16,7 @@ const Navbar = () => {
 				{uId ? (
 					<ul>
 						<li>
-							<NavLink to="/profil">
+							<NavLink to="/profil" title="Aller sur votre profil">
 								<img
 									className="avatar-min"
 									src={userData.avatar}
@@ -26,7 +26,7 @@ const Navbar = () => {
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/feed">Fil d'actualités</NavLink>
+							<NavLink to="/feed">Fil d'actualité</NavLink>
 						</li>
 
 						<Logout />

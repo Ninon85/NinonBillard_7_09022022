@@ -12,9 +12,10 @@ import { getUsers } from "./actions/users.actions";
 import { logger } from "redux-logger";
 //plugin
 import { composeWithDevTools } from "redux-devtools-extension";
+// logger
 const store = createStore(
 	rootReducer,
-	composeWithDevTools(applyMiddleware(thunk, logger))
+	composeWithDevTools(applyMiddleware(thunk))
 );
 store.dispatch(getUsers());
 ReactDOM.render(

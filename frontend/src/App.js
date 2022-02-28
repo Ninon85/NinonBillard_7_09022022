@@ -22,7 +22,7 @@ const App = () => {
 			dispatch(getUser(uId));
 		}
 	}, [uId, dispatch]);
-	console.log(typeof uId);
+
 	return (
 		<UserIdContext.Provider value={uId}>
 			<BrowserRouter>

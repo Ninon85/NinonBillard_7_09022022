@@ -26,10 +26,18 @@ const LikeBtn = ({ post }) => {
 	return (
 		<div className="like-container">
 			{uId && liked === false && (
-				<i className="fas fa-heart" onClick={like} title="Like"></i>
+				<i
+					tabIndex={0}
+					className="fas fa-heart"
+					onClick={like}
+					onKeyPress={like}
+					title="Like"
+				></i>
 			)}
 			{uId && liked && (
 				<i
+					onKeyPress={unlike}
+					tabIndex={0}
 					className="fas fa-heart heart-checked"
 					onClick={unlike}
 					title="Like"

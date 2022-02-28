@@ -7,6 +7,7 @@ const UpdatePostPic = ({ post }) => {
 	const dispatch = useDispatch();
 	const content = post.content;
 	const userData = useSelector((state) => state.userReducer);
+	const error = useSelector((state) => state.errorReducer);
 	const newPost = {
 		userId: userData.id,
 		content,
@@ -31,11 +32,19 @@ const UpdatePostPic = ({ post }) => {
 						className="fa fa-file-image-o"
 						title="Modifier l'image"
 						onClick={() => setUpdatedPic(!updatedPic)}
+						onKeyPress={() => setUpdatedPic(!updatedPic)}
+						tabIndex={0}
 					></i>
 				</div>
 			) : (
 				<>
-					<div onClick={() => setUpdatedPic(!updatedPic)}>Annuler</div>
+					<div
+						tabIndex={0}
+						onKeyPress={() => setUpdatedPic(!updatedPic)}
+						onClick={() => setUpdatedPic(!updatedPic)}
+					>
+						Annuler
+					</div>
 					<form action="" onSubmit={handlePicture} className="upload-avatar">
 						<label htmlFor="image">Changer d'image</label>
 						<input
