@@ -61,8 +61,6 @@ const Card = ({ post }) => {
 							)}
 							{isUpdated && (
 								<div className="update-post">
-									<p className="errorMsg"></p>
-
 									<textarea
 										defaultValue={post.content}
 										onChange={(e) => setTextUpdate(e.target.value)}

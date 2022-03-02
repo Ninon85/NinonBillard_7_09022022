@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateJob, updateMail } from "../../actions/user.actions";
+import Unsubscribe from "./Unsubscribe";
 // import Profil from "../../pages/Profil";
 import UploadAvatar from "./UploadAvatar";
 const UpdateProfil = () => {
@@ -92,6 +93,9 @@ const UpdateProfil = () => {
 								</button>
 							</>
 						)}
+					</div>
+					<div className="unsubscribe">
+						<Unsubscribe user={userData} />
 					</div>
 				</section>
 			</div>

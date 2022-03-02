@@ -1,49 +1,36 @@
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    height: 80px;
-    width: 100%;
-    border-bottom: 2px inset $color-quaternary;
+    height: 100%;
+    width: 60%;
+
     background: #000;
     color: rgb(253, 251, 251);
 
 
     @include mobile-only {
-        padding: 0;
+        padding: 0 2% 0 2%;
+        justify-content: flex-start;
+        width: 100%;
     }
 
 
 
-    .logo-container {
 
-        width: 30%;
-        height: 100%;
-
-        @include mobile-only {
-            width: 50%;
-        }
-
-        img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-        }
-    }
 
     ul {
 
         display: flex;
         width: 100%;
         height: 100%;
-        // justify-content: center;
+
 
         justify-content: space-around;
-        // padding: 0 2% 0 2%;
 
-        // color: #fff;
         @include mobile-only {
             justify-content: space-between;
+            width: 100%;
         }
 
         li {
@@ -55,7 +42,7 @@ nav {
             align-items: center;
             justify-content: center;
             height: 100%;
-            width: 50px;
+
 
 
             a {
@@ -73,5 +60,15 @@ nav {
 
     .fa-sign-out-alt {
         font-size: 1.2em;
+    }
+}
+
+h1 {
+    font-family: 'Bakbak One', cursive;
+    font-size: 2.2em;
+    color: #ffffff;
+
+    @include mobile-only {
+        font-size: 1em;
     }
 }

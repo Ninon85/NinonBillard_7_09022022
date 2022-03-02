@@ -21,12 +21,20 @@
     display: flex;
     flex-direction: column;
 
-
+    .card-content {
+        border-top: 2px outset rgba(29, 28, 28, 0.507);
+        border-left: 2px outset rgba(29, 28, 28, 0.507);
+        border-right: 2px outset rgba(29, 28, 28, 0.507);
+        border-bottom: 2px dotted rgba(29, 28, 28, 0.507);
+        border-radius: 20px 20px 0 0;
+        padding: 10px;
+    }
 
     .card-picture {
-        border-radius: 20px;
+        border-radius: 0 0 20px 20px;
         object-fit: cover;
         width: 100%;
+
     }
 }
 

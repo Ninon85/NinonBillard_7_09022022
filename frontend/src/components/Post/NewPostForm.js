@@ -101,8 +101,8 @@ const NewPostForm = () => {
 									}}
 								/>
 								{content || postPic ? (
-									<ul>
-										<li className="pre-render">
+									<article>
+										<div className="card-header">
 											<div className="avatar-container">
 												<img
 													src={userData.avatar}
@@ -110,15 +110,13 @@ const NewPostForm = () => {
 													className="avatar-min"
 												/>
 											</div>
-											<div className="right-side">
-												<div className="pré-render-header">
-													<h3>{userData.username}</h3>
-												</div>
-												<div className="pre-render-content"> {content}</div>
-												<img className="pre-render-pic" src={postPic} alt="" />
-											</div>
-										</li>
-									</ul>
+											<h2>{userData.username}</h2>
+										</div>
+										<div>
+											<p className="card-content"> {content}</p>
+											<img className="pre-render-pic" src={postPic} alt="" />
+										</div>
+									</article>
 								) : null}
 							</div>
 							<div className="btn-send-form-container">

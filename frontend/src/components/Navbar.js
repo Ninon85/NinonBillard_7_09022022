@@ -9,10 +9,11 @@ const Navbar = () => {
 	const userData = useSelector((state) => state.userReducer);
 	return (
 		<header>
+			<div className="logo-container">
+				<img src="../images/icon_white.png" alt="Logo" />
+				<h1>Groupomania</h1>
+			</div>
 			<nav>
-				<div className="logo-container">
-					<img src="../images/icon-left-font-monochrome-white.png" alt="Logo" />
-				</div>
 				{uId ? (
 					<ul>
 						<li>
@@ -22,7 +23,7 @@ const Navbar = () => {
 									src={userData.avatar}
 									alt="Photode profil"
 								/>
-								<h5>Bienvenue {userData.username}</h5>
+								<span> Bienvenue {userData.username}</span>
 							</NavLink>
 						</li>
 						<li>

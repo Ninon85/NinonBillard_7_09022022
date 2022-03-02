@@ -3,9 +3,16 @@
     display: flex;
     justify-content: center;
 
+    @include mobile-only {
+        padding: 0 2% 0 2%;
+    }
+
     .feed-main {
         width: 50%;
 
+        @include mobile-only {
+            width: 100%;
+        }
     }
 }
 
@@ -17,5 +24,28 @@
         display: flex;
         flex-direction: column;
 
+    }
+}
+
+// .form-header {}
+
+.post-form-container {
+    border-top: 2px solid #000;
+    border-radius: 20px;
+    padding: 10px 0 10px 0;
+
+    textarea {
+        width: 100%;
+        border: none;
+        padding: 0 5px 0 5px;
+        overflow: auto;
+        outline: none;
+
+        resize: none;
+        /*remove the resize handle on the bottom right*/
+    }
+
+    .footer-form {
+        border-top: 2px dotted #000;
     }
 }

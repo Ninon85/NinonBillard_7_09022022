@@ -1,19 +1,39 @@
-//header
+// //header
+
 header {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    height: 65px;
-    width: 100%;
+    background: #000;
+    height: 80px;
+    margin-bottom: 10px;
     border-bottom: 2px inset $color-quaternary;
 
+    @include mobile-only {
+        flex-direction: column;
+        height: auto;
+        background: #000;
+        // height: ;
+    }
+
     .logo-container {
-        object-fit: contain;
-        width: 30%;
+
+        width: auto;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        // @include mobile-only {}
 
         img {
             height: 100%;
-            width: 100%;
+            width: 30%;
+            object-fit: contain;
+
+            @include mobile-only {
+                width: 15%;
+            }
         }
     }
 }
