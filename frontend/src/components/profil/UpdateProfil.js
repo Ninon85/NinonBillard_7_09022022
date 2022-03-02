@@ -5,7 +5,6 @@ import { updateJob, updateMail } from "../../actions/user.actions";
 import UploadAvatar from "./UploadAvatar";
 const UpdateProfil = () => {
 	const userData = useSelector((state) => state.userReducer);
-	const error = useSelector((state) => state.errorReducer);
 	const [job, setJob] = useState("");
 	const [updateForm, setUpdateForm] = useState(false);
 	const [email, setEmail] = useState("");
@@ -33,11 +32,10 @@ const UpdateProfil = () => {
 							alt={"Photo de profil de " + userData.username}
 						/>
 						<UploadAvatar />
-						<p>{error.userErrors.message}</p>
 					</div>
 					<div className="job-update">
 						<h2>Post occupé</h2>
-						{/* {error.userErrors.job.msg && <p>{error.userErrors.job.msg}</p>} */}
+
 						{updateForm === false && (
 							<>
 								<p onClick={() => setUpdateForm(!updateForm)}>{userData.job}</p>

@@ -10,13 +10,12 @@ const NewPostForm = () => {
 	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(true);
 	const [content, setContent] = useState("");
-	const [press, setPress] = useState(false);
+
 	//to send to DB
 	const [file, setFile] = useState();
 	// for pré render
 	const [postPic, setPostPic] = useState(null);
 	const userData = useSelector((state) => state.userReducer);
-	const error = useSelector((state) => state.errorReducer);
 
 	useEffect(() => {
 		if (userData !== null) setIsLoading(false);
@@ -141,7 +140,6 @@ const NewPostForm = () => {
 										</button>
 									</>
 								) : null}
-								{/* {error.postErrors.message && <p>{error.postErrors.message}</p>} */}
 							</div>
 						</div>
 					</div>

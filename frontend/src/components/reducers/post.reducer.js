@@ -9,8 +9,8 @@ import {
 	UPDATE_COMMENT,
 } from "../../actions/post.actions";
 
-const initaialState = {};
-export default function postReducer(state = initaialState, action) {
+const initialState = {};
+export default function postReducer(state = initialState, action) {
 	switch (action.type) {
 		case GET_POSTS:
 			//res.data of action getPost
@@ -46,8 +46,10 @@ export default function postReducer(state = initaialState, action) {
 						content: action.payload.content,
 					};
 				}
+
 				return post;
 			});
+
 		case UPDATE_POST_PIC:
 			return state.map((post) => {
 				if (post.id === action.payload.id) {

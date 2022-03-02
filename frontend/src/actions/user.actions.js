@@ -23,7 +23,12 @@ export const getUser = (uId) => {
 			.then((res) => {
 				dispatch({ type: GET_USER, payload: res.data });
 			})
-			.catch((err) => console.log(err));
+			.catch((error) => {
+				console.log(error);
+				if (error.response) {
+					alert(error.response.data.message);
+				}
+			});
 	};
 };
 export const uploadPicture = (data, id) => {
@@ -46,12 +51,13 @@ export const uploadPicture = (data, id) => {
 					},
 				}).then((res) => {
 					dispatch({ type: UPLOAD_PICTURE, payload: res.data.avatar });
-					dispatch({ type: UPLOAD_ERRORS, payload: "" });
 				});
 			})
-			.catch((err) => {
-				console.log(err);
-				dispatch({ type: UPLOAD_ERRORS, payload: err.response.data });
+			.catch((error) => {
+				console.log(error);
+				if (error.response) {
+					alert(error.response.data.message);
+				}
 			});
 	};
 };
@@ -67,11 +73,12 @@ export const updateJob = (job, id) => {
 		})
 			.then((res) => {
 				dispatch({ type: UPDATE_JOB, payload: job });
-				// dispatch({ type: UPDATE_JOB_ERRORS, payload: "" });
 			})
-			.catch((err) => {
-				console.log(err);
-				dispatch({ type: UPDATE_JOB_ERRORS, payload: err.response.data });
+			.catch((error) => {
+				console.log(error);
+				if (error.response) {
+					alert(error.response.data.job.msg);
+				}
 			});
 	};
 };
@@ -88,6 +95,11 @@ export const updateMail = (email, password, id) => {
 			.then((res) => {
 				dispatch({ type: UPDATE_EMAIL, payload: email });
 			})
-			.catch((err) => console.log(err));
+			.catch((error) => {
+				console.log(error);
+				if (error.response) {
+					alert(error.response.data.email.msg);
+				}
+			});
 	};
 };

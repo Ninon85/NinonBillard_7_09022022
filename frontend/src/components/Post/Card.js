@@ -20,13 +20,17 @@ const Card = ({ post }) => {
 	const [textUpdate, setTextUpdate] = useState(null);
 	const [adminUser, setAdminUser] = useState(false);
 	const [showComments, setShowComments] = useState(false);
+	// dispatch(updatePostContent(post.id, uId, textUpdate))
 	const userData = useSelector((state) => state.userReducer);
 
-	const updateText = () => {
-		if (textUpdate) {
-			dispatch(updatePostContent(post.id, uId, textUpdate));
-		}
-		setIsUpdated(false);
+	const sendStore = async () => {
+		if (textUpdate) dispatch(updatePostContent(post.id, uId, textUpdate));
+	};
+
+	const updateText = async () => {
+		sendStore().then(() => {
+			setIsUpdated(false);
+		});
 	};
 
 	useEffect(() => {
@@ -57,6 +61,8 @@ const Card = ({ post }) => {
 							)}
 							{isUpdated && (
 								<div className="update-post">
+									<p className="errorMsg"></p>
+
 									<textarea
 										defaultValue={post.content}
 										onChange={(e) => setTextUpdate(e.target.value)}

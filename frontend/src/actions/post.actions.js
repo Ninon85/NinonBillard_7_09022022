@@ -1,4 +1,5 @@
 import axios from "axios";
+
 //postS
 export const GET_POSTS = "GET_POSTS";
 export const LIKE_POST = "LIKE_POST";
@@ -12,8 +13,6 @@ export const CREATE_POST_CONTENT = "CREATE_POST_CONTENT";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 export const UPDATE_COMMENT = "UPDATE_COMMENT";
-//errors
-export const GET_POST_ERRORS = "GET_POST_ERRORS";
 
 export const getPosts = (num) => {
 	return (dispatch) => {
@@ -29,7 +28,12 @@ export const getPosts = (num) => {
 				const array = res.data.slice(0, num);
 				dispatch({ type: GET_POSTS, payload: array });
 			})
-			.catch((err) => console.log(err));
+			.catch((error) => {
+				console.log(error);
+				if (error.response) {
+					alert(error.response.data.message);
+				}
+			});
 	};
 };
 
@@ -48,7 +52,10 @@ export const likePost = (postId) => {
 			.then((res) => {
 				dispatch({ type: LIKE_POST, payload: res.data });
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				alert(err.response.data.message);
+				console.log(err);
+			});
 	};
 };
 export const unlikePost = (postId) => {
@@ -66,7 +73,12 @@ export const unlikePost = (postId) => {
 			.then((res) => {
 				dispatch({ type: UNLIKE_POST, payload: res.data });
 			})
-			.catch((err) => console.log(err));
+			.catch((error) => {
+				console.log(error);
+				if (error.response) {
+					alert(error.response.data.message);
+				}
+			});
 	};
 };
 export const updatePostContent = (postId, userId, content) => {
@@ -84,8 +96,14 @@ export const updatePostContent = (postId, userId, content) => {
 		})
 			.then((res) => {
 				dispatch({ type: UPDATE_POST_CONTENT, payload: res.data });
+				// dispatch({ type: UPDATE_POST_CONTENT_ERRORS });
 			})
-			.catch((err) => console.log(err));
+			.catch((error) => {
+				console.log(error);
+				if (error.response) {
+					alert(error.response.data.message);
+				}
+			});
 	};
 };
 export const updatePostPic = (postId, data) => {
@@ -102,7 +120,12 @@ export const updatePostPic = (postId, data) => {
 			.then((res) => {
 				dispatch({ type: UPDATE_POST_PIC, payload: res.data });
 			})
-			.catch((err) => console.log(err));
+			.catch((error) => {
+				console.log(error);
+				if (error.response) {
+					alert(error.response.data.message);
+				}
+			});
 	};
 };
 export const deletePost = (postId) => {
@@ -117,7 +140,12 @@ export const deletePost = (postId) => {
 			.then((res) => {
 				dispatch({ type: DELETE_POST, payload: { postId } });
 			})
-			.catch((err) => console.log(err));
+			.catch((error) => {
+				console.log(error);
+				if (error.response) {
+					alert(error.response.data.message);
+				}
+			});
 	};
 };
 export const createPostWithPic = (data) => {
@@ -130,14 +158,12 @@ export const createPostWithPic = (data) => {
 				"Content-Type": "multipart/form-data",
 			},
 			data,
-		})
-			.then((res) => dispatch({ type: GET_POST_ERRORS, payload: "" }))
-			.catch((err) => {
-				console.log(err.response);
-				if (err.response.data) {
-					dispatch({ type: GET_POST_ERRORS, payload: err.response.data });
-				}
-			});
+		}).catch((error) => {
+			console.log(error);
+			if (error.response) {
+				alert(error.response.data.message);
+			}
+		});
 	};
 };
 export const createPostContent = (userId, content) => {
@@ -153,14 +179,12 @@ export const createPostContent = (userId, content) => {
 				content,
 				attachment: "",
 			},
-		})
-			.then((res) => dispatch({ type: GET_POST_ERRORS, payload: "" }))
-			.catch((err) => {
-				console.log(err.response);
-				if (err.response.data) {
-					dispatch({ type: GET_POST_ERRORS, payload: err.response.data });
-				}
-			});
+		}).catch((error) => {
+			console.log(error);
+			if (error.response) {
+				alert(error.response.data.message);
+			}
+		});
 	};
 };
 //Comments
@@ -182,7 +206,12 @@ export const addComment = (userId, postId, content) => {
 			.then((res) => {
 				dispatch({ type: ADD_COMMENT, payload: res.data });
 			})
-			.catch((err) => console.log(err.response));
+			.catch((error) => {
+				console.log(error);
+				if (error.response) {
+					alert(error.response.data.message);
+				}
+			});
 	};
 };
 export const deleteComment = (postId, commentId) => {
@@ -197,7 +226,12 @@ export const deleteComment = (postId, commentId) => {
 			.then((res) => {
 				dispatch({ type: DELETE_COMMENT, payload: { postId, commentId } });
 			})
-			.catch((err) => console.log(err));
+			.catch((error) => {
+				console.log(error);
+				if (error.response) {
+					alert(error.response.data.message);
+				}
+			});
 	};
 };
 export const updateComment = (postId, commentId, content) => {
@@ -218,6 +252,11 @@ export const updateComment = (postId, commentId, content) => {
 					payload: { postId, commentId, content },
 				});
 			})
-			.catch((err) => console.log(err));
+			.catch((error) => {
+				console.log(error);
+				if (error.response) {
+					alert(error.response.data.message);
+				}
+			});
 	};
 };
