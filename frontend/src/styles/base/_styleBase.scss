@@ -19,4 +19,34 @@
 body {
     width: auto;
     margin: 0;
+    background: #ffffff;
+}
+
+button {
+    cursor: pointer;
+}
+
+.fas,
+.fa {
+    cursor: pointer;
+    font-size: 1.4em;
+}
+
+h1 {
+    font-family: 'Bakbak One', cursive;
+    font-size: 2.2em;
+    color: #ffffff;
+
+    @include mobile-only {
+        font-size: 1em;
+    }
+}
+
+p {
+    font-family: 'Short Stack', cursive;
+}
+
+h2 {
+    font-family: 'Syne Mono', monospace;
+    font-size: 1.2em;
 }

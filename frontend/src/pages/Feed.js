@@ -1,6 +1,5 @@
 import React from "react";
 import NewPostForm from "../components/Post/NewPostForm";
-// import { UserIdContext } from "../components/AppContext";
 import Thread from "../components/Thread";
 
 const Feed = () => {

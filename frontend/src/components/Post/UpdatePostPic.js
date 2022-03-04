@@ -7,7 +7,6 @@ const UpdatePostPic = ({ post }) => {
 	const dispatch = useDispatch();
 	const content = post.content;
 	const userData = useSelector((state) => state.userReducer);
-	const error = useSelector((state) => state.errorReducer);
 	const newPost = {
 		userId: userData.id,
 		content,

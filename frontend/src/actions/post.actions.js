@@ -13,6 +13,8 @@ export const CREATE_POST_CONTENT = "CREATE_POST_CONTENT";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 export const UPDATE_COMMENT = "UPDATE_COMMENT";
+//error
+export const UPDATE_POST_CONTENT_ERROR = "UPDATE_POST_CONTENT_ERROR";
 
 export const getPosts = (num) => {
 	return (dispatch) => {
@@ -96,9 +98,18 @@ export const updatePostContent = (postId, userId, content) => {
 		})
 			.then((res) => {
 				dispatch({ type: UPDATE_POST_CONTENT, payload: res.data });
-				// dispatch({ type: UPDATE_POST_CONTENT_ERRORS });
 			})
 			.catch((error) => {
+				//test
+				// dispatch(updatePostContentError(error.response.data.message));
+				// dispatch({
+				// 	type: UPDATE_POST_CONTENT_ERROR,
+				// 	payload: {
+				// 		error,
+				// 	},
+				// });
+				//////////////////////////////////////////
+
 				console.log(error);
 				if (error.response) {
 					alert(error.response.data.message);
@@ -106,6 +117,13 @@ export const updatePostContent = (postId, userId, content) => {
 			});
 	};
 };
+// const updatePostContentError = (error) => ({
+// 	type: UPDATE_POST_CONTENT_ERROR,
+// 	error: true,
+// 	payload: {
+// 		error,
+// 	},
+// });
 export const updatePostPic = (postId, data) => {
 	return (dispatch) => {
 		return axios({

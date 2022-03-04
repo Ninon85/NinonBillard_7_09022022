@@ -62,13 +62,3 @@ nav {
         font-size: 1.2em;
     }
 }
-
-h1 {
-    font-family: 'Bakbak One', cursive;
-    font-size: 2.2em;
-    color: #ffffff;
-
-    @include mobile-only {
-        font-size: 1em;
-    }
-}

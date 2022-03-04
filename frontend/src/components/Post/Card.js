@@ -19,7 +19,7 @@ const Card = ({ post }) => {
 	const [isUpdated, setIsUpdated] = useState(false);
 	const [textUpdate, setTextUpdate] = useState(null);
 	const [adminUser, setAdminUser] = useState(false);
-	const [showComments, setShowComments] = useState(false);
+	const [showComments, setShowComments] = useState(false); ///
 	// dispatch(updatePostContent(post.id, uId, textUpdate))
 	const userData = useSelector((state) => state.userReducer);
 
@@ -62,6 +62,7 @@ const Card = ({ post }) => {
 							{isUpdated && (
 								<div className="update-post">
 									<textarea
+										className="update-content-post"
 										defaultValue={post.content}
 										onChange={(e) => setTextUpdate(e.target.value)}
 									/>

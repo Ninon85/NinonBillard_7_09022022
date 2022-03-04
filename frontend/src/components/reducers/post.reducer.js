@@ -7,7 +7,9 @@ import {
 	DELETE_POST,
 	DELETE_COMMENT,
 	UPDATE_COMMENT,
+	// UPDATE_POST_CONTENT_ERROR,
 } from "../../actions/post.actions";
+// import errorReducer from "./error.reducer";
 
 const initialState = {};
 export default function postReducer(state = initialState, action) {
@@ -49,6 +51,11 @@ export default function postReducer(state = initialState, action) {
 
 				return post;
 			});
+		// case UPDATE_POST_CONTENT_ERROR:
+		// 	return {
+		// 		...errorReducer(state, action),
+		// 		error: action.payload.error,
+		// 	};
 
 		case UPDATE_POST_PIC:
 			return state.map((post) => {

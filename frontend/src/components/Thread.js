@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../actions/post.actions";
 import Card from "./Post/Card";
 import { isEmpty } from "./Utils";
-
+// props post a delete TEST
 const Thread = () => {
 	//load post ? true
 	const [loadPost, setLoadPost] = useState(true);
@@ -13,10 +13,12 @@ const Thread = () => {
 	const dispatch = useDispatch();
 	//recuperer les post
 	const posts = useSelector((state) => state.postReducer);
+
 	// console.log(document.documentElement.scrollTop);
+
 	//infinite scroll
 	const loadMore = () => {
-		// when the scroll is a the bottom (+1px for integer number )
+		// when the scroll is at the bottom (+1px for integer number )
 		if (
 			window.innerHeight + document.documentElement.scrollTop + 1 >
 			document.scrollingElement.scrollHeight
@@ -35,7 +37,7 @@ const Thread = () => {
 	}, [loadPost, count, dispatch]);
 	return (
 		<div className="thread-container">
-			<ul className="thread-ul">
+			<ul className="thread-list">
 				{!isEmpty(posts[0]) &&
 					posts.map((post) => {
 						return <Card post={post} key={post.id} />;

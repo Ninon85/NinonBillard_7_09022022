@@ -9,9 +9,10 @@ import rootReducer from "./components/reducers/index";
 import { getUsers } from "./actions/users.actions";
 //dev tools only for develop
 //in the console
-import { logger } from "redux-logger";
+// import { logger } from "redux-logger";
 //plugin
 import { composeWithDevTools } from "redux-devtools-extension";
+
 // logger
 const store = createStore(
 	rootReducer,

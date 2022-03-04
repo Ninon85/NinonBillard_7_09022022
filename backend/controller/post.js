@@ -109,10 +109,25 @@ exports.getAllPost = (req, res) => {
 		.then((posts) => res.status(200).json(posts))
 		.catch((error) => res.status(400).json({ error }));
 };
-exports.getAPost = (req, res) => {
-	db.Post.findOne({
-		where: { id: req.params.id },
+// exports.getAPost = (req, res) => {
+// 	db.Post.findOne({
+// 		where: { id: req.params.id },
+// 	})
+// 		.then((post) => res.status(200).json(post))
+// 		.catch((error) => res.status(400).json({ error }));
+// };
+///////////////test///////////////////////////////////
+exports.getAllPostOfOneUser = (req, res) => {
+	db.Post.findAll({
+		where: { userId: req.params.userId },
+		include: [
+			{ model: db.User },
+			{ model: db.Like },
+			{ model: db.Comment, order: [["id", "ASC"]] },
+		],
+		//du plus recent au plus ancien
+		order: [["id", "DESC"]],
 	})
-		.then((post) => res.status(200).json(post))
+		.then((posts) => res.status(200).json(posts))
 		.catch((error) => res.status(400).json({ error }));
 };

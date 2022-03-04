@@ -6,3 +6,9 @@ export const isEmpty = (value) => {
 		(typeof value === "string" && value.trim().length === 0)
 	);
 };
+export const onUploadLabel = (e) => {
+	const keyCode = e.which || e.keyCode;
+	if (keyCode === 13) {
+		e.target.click();
+	}
+};

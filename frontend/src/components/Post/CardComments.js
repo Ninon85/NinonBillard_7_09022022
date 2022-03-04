@@ -11,9 +11,11 @@ const CardComments = ({ post }) => {
 	const handleComment = (e) => {
 		e.preventDefault();
 		if (text) {
-			dispatch(addComment(userData.id, post.id, text)).then(() =>
-				dispatch(getPosts()).then(() => setText(""))
-			);
+			dispatch(addComment(userData.id, post.id, text))
+				.then(() => {
+					dispatch(getPosts());
+				})
+				.then(() => setText(""));
 		}
 	};
 
@@ -30,7 +32,7 @@ const CardComments = ({ post }) => {
 						}
 						key={comment.id}
 					>
-						<div className="left-side">
+						<div className="header-comment">
 							<img
 								className="avatar-min"
 								src={
@@ -45,29 +47,27 @@ const CardComments = ({ post }) => {
 								}
 								alt={"Avatar"}
 							/>
+
+							<h2>
+								{usersData.length >= 0 &&
+									usersData
+										.map((user) => {
+											if (user.id === comment.userId) return user.username;
+											else return null;
+										})
+										.join("")}
+							</h2>
+							<span>{comment.createdAt}</span>
 						</div>
-						<div className="rigth-side">
-							<div className="comment-header">
-								<h3>
-									{usersData.length >= 0 &&
-										usersData
-											.map((user) => {
-												if (user.id === comment.userId) return user.username;
-												else return null;
-											})
-											.join("")}
-								</h3>
-								<span>{comment.createdAt}</span>
-							</div>
-							<div className="comment-footer">
-								<p>{comment.content}</p>
-								<div className="edit-comment">
-									{/* {userData.id === comment.userId && <span>Modifier</span>} */}
-									{userData.id === comment.userId ||
-									userData.isAdmin === true ? (
-										<DeleteEditComment comment={comment} postId={post.id} />
-									) : null}
-								</div>
+
+						<div className="comment-footer">
+							<p>{comment.content}</p>
+
+							<div className="edit-comment-container">
+								{/* {userData.id === comment.userId && <span>Modifier</span>} */}
+								{userData.id === comment.userId || userData.isAdmin === true ? (
+									<DeleteEditComment comment={comment} postId={post.id} />
+								) : null}
 							</div>
 						</div>
 					</article>

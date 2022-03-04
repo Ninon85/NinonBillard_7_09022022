@@ -2,26 +2,68 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+
+    .options-profil-update,
+    .options-profil {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        li {
+
+            width: 50%;
+            padding-left: 5%;
+        }
+    }
+
+    .options-profil-update {
+        background: #000;
+        color: #ffffff;
+
+
+
+    }
+
+    #UserPost {
+
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .post-list {
+        width: 100%;
+    }
+
 }
 
 .profil-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    // width: 50%;
     width: 100%;
+    padding: 30px 2% 30px 2%;
+    background: $bgupdate-profil;
 }
 
 .update-container {
-    width: 50%;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: rgb(250, 247, 247);
+
+
 
     @include mobile-only {
         width: 100%;
+    }
+
+    h2,
+    p {
+        color: #ffffff;
     }
 
     // border-radius: 100%;
@@ -66,6 +108,12 @@
     align-items: center;
     width: 100%;
 
+    label {
+        color: #ffffff;
+        padding: 0.3em;
+        background: rgba(247, 244, 244, 0.493);
+    }
+
     input[type=file] {
         background: $btn-active;
         border-radius: 5px;
@@ -78,37 +126,27 @@
     }
 }
 
-#profil-list {
-    display: flex;
-    justify-content: center;
-    background: red;
-    width: 100%;
-    height: 60px;
+// #profil-list {
+//     display: flex;
+//     justify-content: center;
+//     background: red;
+//     width: 100%;
+//     height: 60px;
 
-    ul {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        background: yellow;
-        width: 50%;
+//     ul {
+//         display: flex;
+//         justify-content: space-around;
+//         align-items: center;
+//         background: yellow;
+//         width: 50%;
 
 
 
-    }
-}
+//     }
+// }
 
-#UserPost {
-    background: red;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 
 .hidden {
     display: none;
-}
-
-p {
-    font-family: 'Courgette', cursive;
 }

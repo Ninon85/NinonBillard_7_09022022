@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { onUploadLabel } from "../Utils";
 import {
 	createPostContent,
 	createPostWithPic,
@@ -49,12 +50,7 @@ const NewPostForm = () => {
 		setPostPic("");
 		setFile("");
 	};
-	const onUploadLabel = (e) => {
-		const keyCode = e.which || e.keyCode;
-		if (keyCode === 13) {
-			e.target.click();
-		}
-	};
+
 	return (
 		<div className="post-form-container">
 			{isLoading ? (

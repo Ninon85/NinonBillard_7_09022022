@@ -21,14 +21,23 @@ const UpdateProfil = () => {
 		dispatch(updateMail(email, password, userData.id));
 		setUpdateFormMail(false);
 	};
-
+	const cancelInfo = (e) => {
+		if (e.target.id === "mailAddress") {
+			setEmail("");
+			setUpdateFormMail(!updateFormMail);
+		} else if (e.target.id === "jobPost") {
+			setJob("");
+			setUpdateForm(!updateForm);
+		}
+	};
 	return (
 		<>
 			<div className="profil-container">
-				<h1>{userData.username}</h1>
 				<section className="update-container">
+					<h2>{userData.username}</h2>
 					<div className="pic-container">
 						<img
+							className="profil-picture"
 							src={userData.avatar}
 							alt={"Photo de profil de " + userData.username}
 						/>
@@ -56,6 +65,9 @@ const UpdateProfil = () => {
 								/>
 								<button onClick={handleUpdate}>
 									Valider les modifications
+								</button>
+								<button id="jobPost" onClick={cancelInfo}>
+									Annuler
 								</button>
 							</>
 						)}
@@ -90,6 +102,9 @@ const UpdateProfil = () => {
 								/>
 								<button onClick={handleUpdateMail}>
 									Valider les modifications
+								</button>
+								<button id="mailAddress" onClick={cancelInfo}>
+									Annuler
 								</button>
 							</>
 						)}
