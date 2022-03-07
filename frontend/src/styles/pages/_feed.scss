@@ -47,5 +47,18 @@
 
     .footer-form {
         border-top: 2px dotted #000;
+        // width: 100%;
+        // display: flex;
+    }
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    label {
+        height: 1.5em;
+        margin-bottom: 15px;
     }
 }

@@ -1,0 +1,45 @@
+footer {
+    height: 10vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 2% 0 2%;
+    background: $bgupdate-profil;
+
+    ul {
+        display: flex;
+
+        align-items: center;
+        height: 100%;
+        width: 50%;
+        margin-right: auto;
+
+        li {
+            width: 33%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            a {
+                text-decoration: underline;
+                color: #ffffff;
+
+            }
+        }
+    }
+
+
+}
+
+.footer-logo-container {
+    height: 100%;
+
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+}

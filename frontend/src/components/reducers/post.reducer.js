@@ -42,7 +42,7 @@ export default function postReducer(state = initialState, action) {
 
 		case UPDATE_POST_CONTENT:
 			return state.map((post) => {
-				if (post.id === action.payload.id) {
+				if (post.id === action.payload.postId) {
 					return {
 						...post,
 						content: action.payload.content,
@@ -54,7 +54,8 @@ export default function postReducer(state = initialState, action) {
 		// case UPDATE_POST_CONTENT_ERROR:
 		// 	return {
 		// 		...errorReducer(state, action),
-		// 		error: action.payload.error,
+		// 		...state,
+		// 		error: action.error,
 		// 	};
 
 		case UPDATE_POST_PIC:

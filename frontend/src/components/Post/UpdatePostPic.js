@@ -13,50 +13,38 @@ const UpdatePostPic = ({ post }) => {
 		attachment: "",
 	};
 
-	const [updatedPic, setUpdatedPic] = useState(false);
 	const handlePicture = (e) => {
 		e.preventDefault();
 		const data = new FormData();
 		data.append("post", JSON.stringify(newPost));
 		data.append("image", file);
 		dispatch(updatePostPic(post.id, data));
-		setUpdatedPic(false);
+		setFile("");
 	};
 
 	return (
 		<div>
-			{updatedPic === false ? (
-				<div>
-					<i
-						className="fa fa-file-image-o"
-						title="Modifier l'image"
-						onClick={() => setUpdatedPic(!updatedPic)}
-						onKeyPress={() => setUpdatedPic(!updatedPic)}
-						tabIndex={0}
-					></i>
-				</div>
-			) : (
-				<>
-					<div
-						tabIndex={0}
-						onKeyPress={() => setUpdatedPic(!updatedPic)}
-						onClick={() => setUpdatedPic(!updatedPic)}
-					>
-						Annuler
-					</div>
-					<form action="" onSubmit={handlePicture} className="upload-avatar">
-						<label htmlFor="image">Changer d'image</label>
-						<input
-							type="file"
-							name="image"
-							id="image"
-							accept=".jpg, .jpeg, .png, .gif"
-							onChange={(e) => setFile(e.target.files[0])}
-						/>
-						<input type="submit" value="Envoyer" />
-					</form>
-				</>
-			)}
+			<>
+				<form action="" onSubmit={handlePicture} className="upload-post-pic">
+					<label htmlFor="image">
+						<i className="fa fa-file-image-o"></i>
+					</label>
+					<input
+						className="hidden"
+						type="file"
+						name="image"
+						id="image"
+						accept=".jpg, .jpeg, .png, .gif"
+						onChange={(e) => {
+							document.getElementById(post.id).src = URL.createObjectURL(
+								e.target.files[0]
+							);
+							setFile(e.target.files[0]);
+						}}
+					/>
+					{file && <input type="submit" value="Enregistrer" />}
+				</form>
+			</>
 		</div>
 	);
 };

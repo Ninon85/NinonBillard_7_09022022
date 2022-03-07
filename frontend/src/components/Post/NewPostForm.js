@@ -97,7 +97,7 @@ const NewPostForm = () => {
 									}}
 								/>
 								{content || postPic ? (
-									<article>
+									<article className="preview-article">
 										<div className="card-header">
 											<div className="avatar-container">
 												<img
@@ -109,7 +109,8 @@ const NewPostForm = () => {
 											<h2>{userData.username}</h2>
 										</div>
 										<div>
-											<p className="card-content"> {content}</p>
+											{/* card-content */}
+											<p className="preview-content"> {content}</p>
 											<img className="pre-render-pic" src={postPic} alt="" />
 										</div>
 									</article>

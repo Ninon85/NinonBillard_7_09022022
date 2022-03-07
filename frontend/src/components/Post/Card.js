@@ -76,6 +76,7 @@ const Card = ({ post }) => {
 							{post.attachment !== "" && (
 								<img
 									className="card-picture"
+									id={post.id}
 									src={post.attachment}
 									alt={post.content}
 								/>

@@ -32,8 +32,8 @@ const UpdateProfil = () => {
 	};
 	return (
 		<>
-			<div className="profil-container">
-				<section className="update-container">
+			<section className="update-container">
+				<div className="profil-container">
 					<h2>{userData.username}</h2>
 					<div className="pic-container">
 						<img
@@ -112,8 +112,8 @@ const UpdateProfil = () => {
 					<div className="unsubscribe">
 						<Unsubscribe user={userData} />
 					</div>
-				</section>
-			</div>
+				</div>
+			</section>
 		</>
 	);
 };

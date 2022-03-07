@@ -4,8 +4,8 @@ import ProfilUser from "../components/profil/ProfilUser";
 import UpdateProfil from "../components/profil/UpdateProfil";
 
 const Profil = () => {
-	const [profilModal, setProfilModal] = useState(false); //inverser true false
-	const [updateModal, setUpdateModal] = useState(true);
+	const [profilModal, setProfilModal] = useState(true); //inverser true false
+	const [updateModal, setUpdateModal] = useState(false);
 	const handleModals = (e) => {
 		if (e.target.id === "profil") {
 			setProfilModal(true);
@@ -21,11 +21,15 @@ const Profil = () => {
 				<li
 					onClick={handleModals}
 					id="profil"
+					tabIndex={0}
+					onKeyPress={handleModals}
 					className={profilModal ? "hidden" : null}
 				>
 					Retourner sur votre profil
 				</li>
 				<li
+					tabIndex={0}
+					onKeyPress={handleModals}
 					onClick={handleModals}
 					id="updateProfil"
 					className={updateModal ? "hidden" : null}

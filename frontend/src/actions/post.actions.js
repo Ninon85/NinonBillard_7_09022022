@@ -97,7 +97,10 @@ export const updatePostContent = (postId, userId, content) => {
 			},
 		})
 			.then((res) => {
-				dispatch({ type: UPDATE_POST_CONTENT, payload: res.data });
+				dispatch({
+					type: UPDATE_POST_CONTENT,
+					payload: { postId, userId, content },
+				});
 			})
 			.catch((error) => {
 				//test
@@ -110,7 +113,7 @@ export const updatePostContent = (postId, userId, content) => {
 				// });
 				//////////////////////////////////////////
 
-				console.log(error);
+				// console.log(error);
 				if (error.response) {
 					alert(error.response.data.message);
 				}
@@ -118,11 +121,9 @@ export const updatePostContent = (postId, userId, content) => {
 	};
 };
 // const updatePostContentError = (error) => ({
-// 	type: UPDATE_POST_CONTENT_ERROR,
-// 	error: true,
-// 	payload: {
-// 		error,
-// 	},
+// 	type: UPDATE_POST_CONTENT,
+// 	payload: null,
+// 	error: error,
 // });
 export const updatePostPic = (postId, data) => {
 	return (dispatch) => {
