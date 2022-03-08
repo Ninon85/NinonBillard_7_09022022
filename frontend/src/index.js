@@ -11,7 +11,7 @@ import { getUsers } from "./actions/users.actions";
 //in the console
 // import { logger } from "redux-logger";
 //plugin
-import { composeWithDevTools } from "redux-devtools-extension";
+import { composeWithDevTools } from "@redux-devtools/extension";
 
 // logger
 const store = createStore(

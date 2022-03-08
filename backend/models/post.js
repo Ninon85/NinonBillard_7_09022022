@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
 			// define association here
 			Post.hasMany(models.Comment, { onDelete: "cascade" });
 			Post.hasMany(models.Like, { onDelete: "cascade" });
-			Post.hasMany(models.Dislike, { onDelete: "cascade" });
 			Post.belongsTo(models.User, {
 				foreignKey: {
 					allowNull: false,

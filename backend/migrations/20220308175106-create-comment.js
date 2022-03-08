@@ -31,9 +31,6 @@ module.exports = {
 			content: {
 				type: Sequelize.STRING(600),
 			},
-			attachment: {
-				type: Sequelize.STRING(800),
-			},
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATEONLY,
