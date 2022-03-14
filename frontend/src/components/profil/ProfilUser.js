@@ -11,10 +11,9 @@ const ProfilUser = () => {
 	const [loadPost, setLoadPost] = useState(true);
 	const [count, setCount] = useState(6);
 	const dispatch = useDispatch();
-	const posts = useSelector((state) => state.postReducer);
-
 	const userData = useSelector((state) => state.userReducer);
 	const userId = userData.id;
+	const posts = useSelector((state) => state.postReducer);
 
 	const loadMore = () => {
 		// when the scroll is at the bottom (+1px for integer number )
@@ -31,6 +30,7 @@ const ProfilUser = () => {
 			setLoadPost(false);
 			setCount(count + 6);
 		}
+
 		window.addEventListener("scroll", loadMore);
 		return () => window.removeEventListener("scroll", loadMore);
 	}, [loadPost, count, dispatch, userId]);
@@ -40,12 +40,11 @@ const ProfilUser = () => {
 			<h2>Vos Publications</h2>
 			<ul className="post-list">
 				{!isEmpty(posts[0]) &&
-					posts.map((post) => {
-						if (post.userId === userId) {
+					posts
+						.filter((post) => post.userId === userData.id)
+						.map((post) => {
 							return <Card post={post} key={post.id} />;
-						}
-						return null;
-					})}
+						})}
 			</ul>
 		</main>
 	);

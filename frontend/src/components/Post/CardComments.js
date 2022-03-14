@@ -16,6 +16,8 @@ const CardComments = ({ post }) => {
 					dispatch(getPosts());
 				})
 				.then(() => setText(""));
+		} else {
+			alert("Veuillez saisir du texte");
 		}
 	};
 

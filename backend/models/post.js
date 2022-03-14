@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
 	Post.init(
 		{
 			userId: DataTypes.INTEGER.UNSIGNED,
-			content: DataTypes.STRING(1000),
+			content: DataTypes.STRING(2000),
 			attachment: DataTypes.STRING(800),
 		},
 		{

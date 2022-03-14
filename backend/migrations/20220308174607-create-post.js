@@ -19,7 +19,7 @@ module.exports = {
 				},
 			},
 			content: {
-				type: Sequelize.STRING(1000),
+				type: Sequelize.STRING(2000),
 			},
 			attachment: {
 				type: Sequelize.STRING(800),

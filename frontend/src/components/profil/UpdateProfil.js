@@ -56,19 +56,21 @@ const UpdateProfil = () => {
 						)}
 						{updateForm && (
 							<>
-								<input
-									type="text"
-									name=""
-									id=""
-									defaultValue={userData.job}
-									onChange={(e) => setJob(e.target.value)}
-								/>
-								<button onClick={handleUpdate}>
-									Valider les modifications
-								</button>
-								<button id="jobPost" onClick={cancelInfo}>
-									Annuler
-								</button>
+								<form className="update-profil-form">
+									<input
+										type="text"
+										name=""
+										id=""
+										defaultValue={userData.job}
+										onChange={(e) => setJob(e.target.value)}
+									/>
+									<button onClick={handleUpdate}>
+										Valider les modifications
+									</button>
+									<button id="jobPost" onClick={cancelInfo}>
+										Annuler
+									</button>
+								</form>
 							</>
 						)}
 					</div>
@@ -86,26 +88,28 @@ const UpdateProfil = () => {
 						)}
 						{updateFormMail && (
 							<>
-								<input
-									type="email"
-									name=""
-									id=""
-									defaultValue={userData.email}
-									onChange={(e) => setEmail(e.target.value)}
-								/>
-								<input
-									type="password"
-									// name=""
-									// id=""
-									placeholder="Veuillez renseigner votre mot de passe"
-									onChange={(e) => setPassword(e.target.value)}
-								/>
-								<button onClick={handleUpdateMail}>
-									Valider les modifications
-								</button>
-								<button id="mailAddress" onClick={cancelInfo}>
-									Annuler
-								</button>
+								<form className="update-profil-form">
+									<input
+										type="email"
+										name=""
+										id=""
+										defaultValue={userData.email}
+										onChange={(e) => setEmail(e.target.value)}
+									/>
+									<input
+										type="password"
+										// name=""
+										// id=""
+										placeholder="Veuillez renseigner votre mot de passe"
+										onChange={(e) => setPassword(e.target.value)}
+									/>
+									<button onClick={handleUpdateMail}>
+										Valider les modifications
+									</button>
+									<button id="mailAddress" onClick={cancelInfo}>
+										Annuler
+									</button>
+								</form>
 							</>
 						)}
 					</div>

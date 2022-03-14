@@ -1,13 +1,30 @@
+import axios from "axios";
 import React from "react";
-//font awesome
+import { useSelector } from "react-redux";
 
-const logout = () => {
-	localStorage.clear();
-	window.location = "/";
-};
 const Logout = () => {
+	// const userData = useSelector((state) => state.userReducer);
+	const handlelogout = () => {
+		// axios({
+		// 	method: "post",
+		// 	url: `${process.env.REACT_APP_API_URL}api/user/disconnect/${userData.id}`,
+		// 	headers: {
+		// 		authorization: `Bearer ${localStorage.getItem("token")}`,
+		// 	},
+		// })
+		// 	.then(() => {
+		localStorage.clear();
+		window.location = "/";
+		// })
+		// .catch((error) => {
+		// 	console.log(error);
+
+		// 	alert(error.response.data.message);
+		// });
+	};
+
 	return (
-		<li onClick={logout} tabIndex={0} onKeyPress={logout}>
+		<li onClick={handlelogout} tabIndex={0} onKeyPress={handlelogout}>
 			<i className="fas fa-sign-out-alt" title="Déconnexion"></i>
 		</li>
 	);

@@ -3,10 +3,10 @@ const fs = require("fs");
 
 exports.createPost = (req, res, next) => {
 	// console.log(req);
-	if (req.body.content === "" && !req.file) {
+	if (req.body.content.trim().length === 0 && !req.file) {
 		return res.status(400).json({
 			message:
-				"Un post ne peut pas être vide et ne peut pas contenir uniquement des caractères spéciaux, seuls les emoticons sont accéptés",
+				"Un post ne peut pas être vide et ne peut pas contenir uniquement des caractères spéciaux, seuls les emoticônes sont acceptés",
 		});
 	}
 	const newPost = req.file
@@ -63,10 +63,10 @@ exports.updatePost = (req, res) => {
 				)}/public/postPic/picOf-${req.auth.userId}/${req.file.filename}`,
 		  }
 		: { ...req.body };
-	if (postUpdate.content === "" && !req.file) {
+	if (postUpdate.content.trim().length === 0 && !req.file) {
 		return res.status(400).json({
 			message:
-				"Un post ne peut pas être vide et ne peut pas contenir uniquement des caractères spéciaux, seuls les emoticons sont accéptés",
+				"Un post ne peut pas être vide et ne peut pas contenir uniquement des caractères spéciaux, seuls les emoticons sont acceptés",
 		});
 	}
 	db.Post.findOne({

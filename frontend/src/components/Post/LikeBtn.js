@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { likePost, unlikePost } from "../../actions/post.actions";
-import { UserIdContext } from "../AppContext";
+import { loginContext } from "../AppContext";
 
 const LikeBtn = ({ post }) => {
 	const [liked, setLiked] = useState(false);
-	const uId = useContext(UserIdContext);
+	const uId = useContext(loginContext);
 	const dispatch = useDispatch();
 	const like = () => {
 		dispatch(likePost(post.id));

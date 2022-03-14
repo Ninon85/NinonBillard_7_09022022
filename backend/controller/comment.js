@@ -2,7 +2,7 @@ const db = require("../models");
 
 //create
 exports.createComment = (req, res) => {
-	if (req.body.content.length === 0)
+	if (req.body.content.trim().length === 0)
 		return res.status(400).json({
 			message:
 				"Saisie incorrecte, vous ne pouvez pas saisir uniquement des caractères spéciaux",

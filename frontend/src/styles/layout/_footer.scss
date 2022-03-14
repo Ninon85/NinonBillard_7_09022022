@@ -15,6 +15,11 @@ footer {
         width: 50%;
         margin-right: auto;
 
+        @include mobile-only {
+            width: 100%;
+            justify-content: space-between;
+        }
+
         li {
             width: 33%;
             height: 100%;
@@ -22,9 +27,13 @@ footer {
             justify-content: flex-start;
             align-items: center;
 
+            @include mobile-only {
+                width: 50%;
+            }
+
             a {
                 text-decoration: underline;
-                color: #ffffff;
+                color: $white-bg;
 
             }
         }

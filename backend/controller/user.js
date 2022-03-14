@@ -111,10 +111,11 @@ exports.login = (req, res) => {
 						),
 					});
 				})
-				.catch((err) => res.status(500).json({ err }));
+				.catch((err) => res.status(500).json(err));
 		})
-		.catch((err) => res.status(500).json({ err }));
+		.catch((err) => res.status(500).json(err));
 };
+
 //get 1 user
 exports.getOneUser = (req, res) => {
 	db.User.findOne({

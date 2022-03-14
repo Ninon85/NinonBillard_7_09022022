@@ -16,7 +16,7 @@ const DeleteEditComment = ({ comment, postId }) => {
 	};
 	const handleEdit = (e) => {
 		e.preventDefault();
-		if (text) {
+		if (text && text.trim().length !== 0) {
 			dispatch(updateComment(postId, comment.id, text));
 			setEdit(!edit);
 			// .then(() => {
@@ -24,6 +24,10 @@ const DeleteEditComment = ({ comment, postId }) => {
 			// 		alert(error);
 			// 	}
 			// });
+		} else {
+			return alert(
+				"Vous devez saisir quelque chose ou bien annuler la modification."
+			);
 		}
 	};
 	return (

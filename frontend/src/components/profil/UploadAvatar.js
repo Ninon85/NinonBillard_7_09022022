@@ -29,6 +29,8 @@ const UploadAvatar = () => {
 				id="image"
 				accept=".jpg, .jpeg, .png, .gif"
 				onChange={(e) => {
+					if (e.target.files[0].size > 3670016)
+						return alert("Fichier trop volumineux");
 					document.querySelector(".profil-picture").src = URL.createObjectURL(
 						e.target.files[0]
 					);

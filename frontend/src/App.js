@@ -9,22 +9,35 @@ import Home from "./pages/Home";
 import Profil from "./pages/Profil";
 // import Navbar from "./components/Navbar";
 import Navbar from "./components/Navbar";
-import { UserIdContext } from "./components/AppContext";
+import { loginContext } from "./components/AppContext";
 import { useDispatch } from "react-redux";
 import { getUser } from "./actions/user.actions";
+import { getUsers } from "./actions/users.actions";
+import { isExpired, decodeToken } from "react-jwt";
 const App = () => {
 	const [uId, setUid] = useState(null);
+	const [myToken, setMyToken] = useState(null);
+
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		setUid(parseInt(localStorage.getItem("id")));
+		setMyToken(localStorage.getItem("token"));
+		if (myToken && uId) {
+			const myDecodedToken = decodeToken(myToken);
+			const isMyTokenExpired = isExpired(myToken);
 
-		if (uId) {
-			dispatch(getUser(uId));
+			if (!myDecodedToken || isMyTokenExpired) {
+				localStorage.clear();
+			} else if (uId && myDecodedToken && !isMyTokenExpired) {
+				dispatch(getUser(uId));
+				dispatch(getUsers());
+			}
 		}
-	}, [uId, dispatch]);
+	}, [dispatch, myToken, uId]);
 
 	return (
-		<UserIdContext.Provider value={uId}>
+		<loginContext.Provider value={uId}>
 			<BrowserRouter>
 				<Navbar />
 				<Routes>
@@ -35,7 +48,7 @@ const App = () => {
 					<Route path="*" element={<Home />} />
 				</Routes>
 			</BrowserRouter>
-		</UserIdContext.Provider>
+		</loginContext.Provider>
 	);
 };
 

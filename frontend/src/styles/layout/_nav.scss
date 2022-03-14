@@ -12,6 +12,7 @@ nav {
     @include mobile-only {
         padding: 0 2% 0 2%;
         justify-content: flex-start;
+
         width: 100%;
     }
 
@@ -31,12 +32,12 @@ nav {
         @include mobile-only {
             justify-content: space-between;
             width: 100%;
+            flex-wrap: wrap-reverse;
         }
 
         li {
             cursor: pointer;
             padding: 5px;
-            // border: 1px outset rgba(255, 255, 255, 0.603);
             border-radius: 5px;
             display: flex;
             align-items: center;

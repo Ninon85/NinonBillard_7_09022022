@@ -19,7 +19,7 @@
 body {
     width: auto;
     margin: 0;
-    background: $white-bg;
+    // background: $white-bg;
 }
 
 button {
@@ -35,14 +35,17 @@ button {
 h1 {
     font-family: 'Bakbak One', cursive;
     font-size: 2.2em;
-    color: #ffffff;
+    color: $white-bg;
 
     @include mobile-only {
         font-size: 1em;
     }
 }
 
-p {
+p,
+a,
+span,
+textarea::placeholder {
     font-family: 'Short Stack', cursive;
 }
 

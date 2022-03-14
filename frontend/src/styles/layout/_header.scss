@@ -6,14 +6,14 @@ header {
     justify-content: space-between;
     background: #000;
     height: 10vh;
-    margin-bottom: 10px;
-    border-bottom: 2px inset $color-quaternary;
+
+    // border-bottom: 2px inset $color-quaternary;
 
     @include mobile-only {
         flex-direction: column;
         height: auto;
         background: #000;
-        // height: ;
+        min-height: 10vh;
     }
 
     .logo-container {

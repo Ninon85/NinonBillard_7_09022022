@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
-import { UserIdContext } from "./AppContext";
+import { loginContext } from "./AppContext";
 import Logout from "./Log/Logout";
 import { useSelector } from "react-redux";
 const Navbar = () => {
-	const uId = useContext(UserIdContext);
+	const uId = useContext(loginContext);
 	const userData = useSelector((state) => state.userReducer);
 	return (
 		<header>

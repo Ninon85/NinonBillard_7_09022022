@@ -14,7 +14,7 @@ const NewPostForm = () => {
 
 	//to send to DB
 	const [file, setFile] = useState();
-	// for pré render
+	// for preview
 	const [postPic, setPostPic] = useState(null);
 	const userData = useSelector((state) => state.userReducer);
 
@@ -35,11 +35,14 @@ const NewPostForm = () => {
 				dispatch(getPosts());
 				cancelPost();
 			});
-		} else if (content) {
+		} else if (content && content.trim().length !== 0) {
 			dispatch(createPostContent(userData.id, content)).then(() => {
 				dispatch(getPosts());
 				cancelPost();
 			});
+		} else {
+			alert("Un post ne peut pas être vide.");
+			cancelPost();
 		}
 	};
 	const handlePicture = (e) => {

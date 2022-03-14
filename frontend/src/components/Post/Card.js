@@ -2,18 +2,18 @@ import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePostContent } from "../../actions/post.actions";
 
-import { UserIdContext } from "../AppContext";
+import { loginContext } from "../AppContext";
 import { isEmpty } from "../Utils";
 
 import DeleteCard from "./DeleteCard";
 import LikeBtn from "./LikeBtn";
-import UpdatePostPic from "./UpdatePostPic";
 import CardComments from "./CardComments";
+// import { getUsers } from "../../actions/users.actions";
 
 const Card = ({ post }) => {
 	// console.log(post.Comments.length);
 	const dispatch = useDispatch();
-	const uId = useContext(UserIdContext);
+	const uId = useContext(loginContext);
 	//is loading ? true
 	const [loading, setLoading] = useState(true);
 	const [isUpdated, setIsUpdated] = useState(false);
@@ -35,8 +35,9 @@ const Card = ({ post }) => {
 
 	useEffect(() => {
 		!isEmpty(post) && setLoading(false);
+		// dispatch(getUsers());
 		userData.isAdmin === true && setAdminUser(true);
-	}, [post, userData.isAdmin]);
+	}, [post, userData.isAdmin, dispatch]);
 	return (
 		<li className="card-container" key={post.id}>
 			{loading ? (
@@ -98,7 +99,6 @@ const Card = ({ post }) => {
 											></i>
 										</div>
 									</div>
-									{post.attachment !== "" && <UpdatePostPic post={post} />}
 								</>
 							)}
 							{userData.id === post.userId || adminUser ? (

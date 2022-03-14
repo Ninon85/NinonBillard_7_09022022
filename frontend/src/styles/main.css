@@ -25,7 +25,6 @@
 body {
   width: auto;
   margin: 0;
-  background: #ffffff;
 }
 
 button {
@@ -41,7 +40,7 @@ button {
 h1 {
   font-family: 'Bakbak One', cursive;
   font-size: 2.2em;
-  color: #ffffff;
+  color: #e9e9e9;
 }
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
@@ -50,7 +49,31 @@ h1 {
   }
 }
 
-p {
+p,
+a,
+span,
+textarea::-webkit-input-placeholder {
+  font-family: 'Short Stack', cursive;
+}
+
+p,
+a,
+span,
+textarea:-ms-input-placeholder {
+  font-family: 'Short Stack', cursive;
+}
+
+p,
+a,
+span,
+textarea::-ms-input-placeholder {
+  font-family: 'Short Stack', cursive;
+}
+
+p,
+a,
+span,
+textarea::placeholder {
   font-family: 'Short Stack', cursive;
 }
 
@@ -164,7 +187,7 @@ input[type=submit] {
 }
 
 button {
-  background: #ffffff;
+  background: #e9e9e9;
   padding: 0.3em;
   border: none;
   border-radius: 20px;
@@ -193,19 +216,8 @@ button {
           flex-direction: column;
   width: 100%;
   margin: 5px 0 5px 0;
-}
-
-.card-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 100%;
+  background: #e9e9e9;
+  border-radius: 20px;
 }
 
 .card-contents {
@@ -224,6 +236,27 @@ button {
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
+}
+
+.card-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  padding: 2px 10px 0 10px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .card-header {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
 }
 
 .update-content-post,
@@ -251,6 +284,7 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-bottom: 10px;
 }
 
 .comment-icon,
@@ -273,6 +307,7 @@ button {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding: 2px 10px 0 10px;
 }
 
 .comment-container {
@@ -327,12 +362,13 @@ article {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
+  padding: 0 5px 0 5px;
 }
 
 .comment-container-owner,
 .comment-container {
   border: 2px double rgba(0, 0, 0, 0.404);
-  background: rgba(214, 196, 178, 0.376);
+  background: #8f929470;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -342,10 +378,11 @@ article {
           flex-direction: column;
   margin-top: 10px;
   border-radius: 20px;
+  color: #e9e9e9;
 }
 
 .comment-container-owner {
-  background: #d6c4b2;
+  background: #212529;
 }
 
 .header-comment {
@@ -358,6 +395,13 @@ article {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .header-comment {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
 }
 
 .edit-comment {
@@ -421,6 +465,7 @@ article {
   -webkit-hyphens: auto;
       -ms-hyphens: auto;
           hyphens: auto;
+  color: black;
 }
 
 .comment-form {
@@ -455,8 +500,6 @@ header {
           justify-content: space-between;
   background: #000;
   height: 10vh;
-  margin-bottom: 10px;
-  border-bottom: 2px inset #d5d5d5;
 }
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
@@ -467,6 +510,7 @@ header {
             flex-direction: column;
     height: auto;
     background: #000;
+    min-height: 10vh;
   }
 }
 
@@ -539,6 +583,8 @@ nav ul {
         -ms-flex-pack: justify;
             justify-content: space-between;
     width: 100%;
+    -ms-flex-wrap: wrap-reverse;
+        flex-wrap: wrap-reverse;
   }
 }
 
@@ -600,6 +646,15 @@ footer ul {
   margin-right: auto;
 }
 
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  footer ul {
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
 footer ul li {
   width: 33%;
   height: 100%;
@@ -614,9 +669,15 @@ footer ul li {
           align-items: center;
 }
 
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  footer ul li {
+    width: 50%;
+  }
+}
+
 footer ul li a {
   text-decoration: underline;
-  color: #ffffff;
+  color: #e9e9e9;
 }
 
 .footer-logo-container {
@@ -634,6 +695,10 @@ footer ul li a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -641,6 +706,12 @@ footer ul li a {
       -ms-flex-align: center;
           align-items: center;
   height: 80vh;
+  background: #212529;
+}
+
+.home-page h2 {
+  margin: 50px 0 50px 0;
+  color: #e9e9e9;
 }
 
 .log-container {
@@ -686,7 +757,7 @@ footer ul li a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  color: #fff;
+  color: #e9e9e9;
 }
 
 .form-container ul li {
@@ -706,7 +777,7 @@ footer ul li a {
 
 #logForm {
   margin-top: 2%;
-  color: #fff;
+  color: #e9e9e9;
 }
 
 #logForm input {
@@ -734,6 +805,8 @@ footer ul li a {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  background: #8f929470;
+  min-height: 90vh;
 }
 
 .profil-page .options-profil-update,
@@ -752,17 +825,11 @@ footer ul li a {
 .profil-page .options-profil li {
   padding: 1.2em;
   cursor: pointer;
-  border: 2px solid rgba(29, 28, 28, 0.507);
-}
-
-.profil-page .options-profil-update li :active,
-.profil-page .options-profil li :active {
-  background: #3574da;
 }
 
 .profil-page .options-profil-update {
   background: #000;
-  color: #ffffff;
+  color: #e9e9e9;
 }
 
 .profil-page #UserPost {
@@ -805,8 +872,8 @@ footer ul li a {
 }
 
 .profil-container button {
-  background: #ffffff;
-  padding: 0.3em;
+  background: #e9e9e9;
+  padding: 0.5em;
   border: none;
   border-radius: 20px;
 }
@@ -826,6 +893,7 @@ footer ul li a {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  min-height: 90vh;
   padding: 30px 2% 30px 2%;
   background: #000000;
 }
@@ -838,7 +906,7 @@ footer ul li a {
 
 .update-container h2,
 .update-container p {
-  color: #ffffff;
+  color: #e9e9e9;
 }
 
 .update-container .job-update,
@@ -846,7 +914,7 @@ footer ul li a {
 .update-container .unsubscribe {
   margin: 10px 0 10px 0;
   width: 100%;
-  height: 10vh;
+  min-height: 10vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -859,6 +927,23 @@ footer ul li a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.update-container .update-profil-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.update-container .update-profil-form input,
+.update-container .update-profil-form button {
+  margin: 10px 0 10px 0;
 }
 
 .update-container .pic-container {
@@ -917,9 +1002,9 @@ footer ul li a {
 }
 
 .upload-avatar label {
-  color: #ffffff;
+  color: #e9e9e9;
   padding: 0.3em;
-  background: rgba(0, 0, 0, 0.568);
+  background: #212529;
 }
 
 .upload-avatar input[type=file] {
@@ -947,6 +1032,8 @@ footer ul li a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  min-height: 90vh;
+  background: #212529;
 }
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
@@ -956,7 +1043,7 @@ footer ul li a {
 }
 
 .feed .feed-main {
-  width: 50%;
+  width: 80%;
 }
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
@@ -980,10 +1067,15 @@ footer ul li a {
           flex-direction: column;
 }
 
+.form-header {
+  padding: 2px 10px 0 10px;
+}
+
 .post-form-container {
   border-top: 2px solid #000;
   border-radius: 20px;
   padding: 10px 0 10px 0;
+  margin-top: 10px;
 }
 
 .post-form-container textarea {
@@ -992,8 +1084,28 @@ footer ul li a {
   padding: 0 5px 0 5px;
   overflow: auto;
   outline: none;
+  border-radius: 20px 20px 0 0;
+  padding: 5px;
+  height: 90px;
   resize: none;
+  background: #8f929470;
   /*remove the resize handle on the bottom right*/
+}
+
+.post-form-container textarea::-webkit-input-placeholder {
+  color: #212529;
+}
+
+.post-form-container textarea:-ms-input-placeholder {
+  color: #212529;
+}
+
+.post-form-container textarea::-ms-input-placeholder {
+  color: #212529;
+}
+
+.post-form-container textarea::placeholder {
+  color: #212529;
 }
 
 .post-form-container .footer-form {
@@ -1009,10 +1121,16 @@ footer ul li a {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
+  padding: 2px 10px 0 10px;
 }
 
 .icon-container label {
   height: 1.5em;
   margin-bottom: 15px;
+}
+
+.feed-post-header {
+  background: #e9e9e9;
+  border-radius: 20px;
 }
 /*# sourceMappingURL=main.css.map */
