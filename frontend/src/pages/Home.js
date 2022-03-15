@@ -4,7 +4,9 @@ const Home = () => {
 	return (
 		<>
 			<div className="home-page">
-				<h2 id="home-title">Partagez</h2>
+				<h2 id="home-title">
+					Partagez vos plus beaux gifs et vos plus belles images !
+				</h2>
 				<div className="log-container">
 					<Log signup={false} login={true} />
 				</div>

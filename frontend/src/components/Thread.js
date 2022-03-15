@@ -13,7 +13,7 @@ const Thread = () => {
 	const dispatch = useDispatch();
 	//recuperer les post
 	const posts = useSelector((state) => state.postReducer);
-
+	// const uId = useContext(loginContext);
 	// console.log(document.documentElement.scrollTop);
 
 	//infinite scroll

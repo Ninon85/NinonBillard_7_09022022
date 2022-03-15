@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../actions/post.actions";
+import { loginContext } from "../AppContext";
 
 import Card from "../Post/Card";
 
@@ -14,6 +15,7 @@ const ProfilUser = () => {
 	const userData = useSelector((state) => state.userReducer);
 	const userId = userData.id;
 	const posts = useSelector((state) => state.postReducer);
+	const uId = useContext(loginContext);
 
 	const loadMore = () => {
 		// when the scroll is at the bottom (+1px for integer number )
@@ -37,15 +39,21 @@ const ProfilUser = () => {
 
 	return (
 		<main id="UserPost">
-			<h2>Vos Publications</h2>
-			<ul className="post-list">
-				{!isEmpty(posts[0]) &&
-					posts
-						.filter((post) => post.userId === userData.id)
-						.map((post) => {
-							return <Card post={post} key={post.id} />;
-						})}
-			</ul>
+			{uId ? (
+				<>
+					<h2>Vos Publications</h2>
+					<ul className="post-list">
+						{!isEmpty(posts[0]) &&
+							posts
+								.filter((post) => post.userId === userData.id)
+								.map((post) => {
+									return <Card post={post} key={post.id} />;
+								})}
+					</ul>
+				</>
+			) : (
+				<p>Connectez-vous !</p>
+			)}
 		</main>
 	);
 };
