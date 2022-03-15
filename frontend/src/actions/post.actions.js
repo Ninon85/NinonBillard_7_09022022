@@ -34,6 +34,10 @@ export const getPosts = (num) => {
 			if (error.response) {
 				alert(error.response.data.message);
 			}
+			if (error.response.status === 401) {
+				localStorage.clear();
+				window.location = "/";
+			}
 		}
 	};
 };
@@ -55,6 +59,10 @@ export const likePost = (postId) => {
 		} catch (err) {
 			alert(err.response.data.message);
 			console.log(err);
+			if (err.response.status === 401) {
+				localStorage.clear();
+				window.location = "/";
+			}
 		}
 	};
 };
@@ -76,6 +84,10 @@ export const unlikePost = (postId) => {
 			console.log(error);
 			if (error.response) {
 				alert(error.response.data.message);
+			}
+			if (error.response.status === 401) {
+				localStorage.clear();
+				window.location = "/";
 			}
 		}
 	};
@@ -113,6 +125,9 @@ export const updatePostContent = (postId, userId, content) => {
 				alert(error.response.data.content.msg);
 			} else if (error.response.data.message) {
 				alert(error.response.data.message);
+			} else if (error.response.status === 401) {
+				localStorage.clear();
+				window.location = "/";
 			}
 		}
 	};
@@ -139,6 +154,10 @@ export const deletePost = (postId) => {
 			if (error.response) {
 				alert(error.response.data.message);
 			}
+			if (error.response.status === 401) {
+				localStorage.clear();
+				window.location = "/";
+			}
 		}
 	};
 };
@@ -158,6 +177,10 @@ export const createPostWithPic = (data) => {
 			console.log(error);
 			if (error.response) {
 				alert("Fichier trop volumineux");
+			}
+			if (error.response.status === 401) {
+				localStorage.clear();
+				window.location = "/";
 			}
 		}
 	};
@@ -188,6 +211,10 @@ export const createPostContent = (userId, content) => {
 			if (error.response.data.content) {
 				alert("Minimun 2 caractères ou 2 émticônes ☺😉");
 			}
+			if (error.response.status === 401) {
+				localStorage.clear();
+				window.location = "/";
+			}
 		}
 	};
 };
@@ -217,6 +244,9 @@ export const addComment = (userId, postId, content) => {
 				alert(error.response.data.message);
 			} else if (error.response.data.content) {
 				alert("Minimun 2 caractères ou 2 émticônes ☺😉");
+			} else if (error.response.status === 401) {
+				localStorage.clear();
+				window.location = "/";
 			}
 		}
 	};
@@ -236,6 +266,10 @@ export const deleteComment = (postId, commentId) => {
 			console.log(error);
 			if (error.response) {
 				alert(error.response.data.message);
+			}
+			if (error.response.status === 401) {
+				localStorage.clear();
+				window.location = "/";
 			}
 		}
 	};
@@ -265,6 +299,9 @@ export const updateComment = (postId, commentId, content) => {
 				alert(error.response.data.message);
 			} else if (error.response.data.content) {
 				alert("Minimun 2 caractères ou 2 émticônes ☺😉");
+			} else if (error.response.status === 401) {
+				localStorage.clear();
+				window.location = "/";
 			}
 		}
 	};

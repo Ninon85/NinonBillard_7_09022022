@@ -12,3 +12,7 @@ export const onUploadLabel = (e) => {
 		e.target.click();
 	}
 };
+
+export const getToken = () => {
+	return localStorage.getItem("token");
+};

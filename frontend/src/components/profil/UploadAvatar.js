@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadPicture } from "../../actions/user.actions";
-import { onUploadLabel } from "../Utils";
+import { onUploadLabel } from "../../utils/utils";
 const UploadAvatar = () => {
 	const [file, setFile] = useState();
 	const dispatch = useDispatch();

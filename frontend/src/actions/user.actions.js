@@ -27,6 +27,10 @@ export const getUser = (uId) => {
 			if (error.response) {
 				alert(error.response.data.message);
 			}
+			if (error.response.status === 401) {
+				localStorage.clear();
+				window.location = "/";
+			}
 		}
 	};
 };
@@ -55,6 +59,10 @@ export const uploadPicture = (data, id) => {
 			if (error.response) {
 				alert(error.response.data.message);
 			}
+			if (error.response.status === 401) {
+				localStorage.clear();
+				window.location = "/";
+			}
 		}
 	};
 };
@@ -76,6 +84,9 @@ export const updateJob = (job, id) => {
 				alert(error.response.data.job.msg);
 			} else if (error.response.data.message) {
 				alert(error.response.data.message);
+			} else if (error.response.status === 401) {
+				localStorage.clear();
+				window.location = "/";
 			}
 		}
 	};
@@ -98,6 +109,9 @@ export const updateMail = (email, password, id) => {
 				alert(error.response.data.email.msg);
 			} else if (error.response.data.message) {
 				alert(error.response.data.message);
+			} else if (error.response.status === 401) {
+				localStorage.clear();
+				window.location = "/";
 			}
 		}
 	};

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../actions/post.actions";
 import Card from "./Post/Card";
-import { isEmpty } from "./Utils";
+import { isEmpty } from "../utils/utils";
 // props post a delete TEST
 const Thread = () => {
 	//load post ? true

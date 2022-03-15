@@ -5,7 +5,7 @@ import { loginContext } from "../AppContext";
 
 import Card from "../Post/Card";
 
-import { isEmpty } from "../Utils";
+import { isEmpty } from "../../utils/utils";
 
 const ProfilUser = () => {
 	//load post ? true

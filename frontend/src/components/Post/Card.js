@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updatePostContent } from "../../actions/post.actions";
 
 import { loginContext } from "../AppContext";
-import { isEmpty } from "../Utils";
+import { isEmpty } from "../../utils/utils";
 
 import DeleteCard from "./DeleteCard";
 import LikeBtn from "./LikeBtn";

@@ -12,6 +12,12 @@ export const getUsers = () => {
 			.then((res) => {
 				dispatch({ type: GET_USERS, payload: res.data });
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				console.log(err);
+				if (err.response.status === 401) {
+					localStorage.clear();
+					window.location = "/";
+				}
+			});
 	};
 };
