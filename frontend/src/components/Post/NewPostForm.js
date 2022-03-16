@@ -129,11 +129,7 @@ const NewPostForm = () => {
 										>
 											Annuler
 										</button>
-										<button
-											className="send"
-											onKeyPress={handlePost}
-											onClick={handlePost}
-										>
+										<button className="send" onClick={handlePost}>
 											Envoyer
 										</button>
 									</>

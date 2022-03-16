@@ -33,11 +33,20 @@ const DeleteEditComment = ({ comment, postId }) => {
 	return (
 		<>
 			<div className="edit-comment">
-				<span className="delete-comment" onClick={handleDelete}>
+				<span
+					tabIndex={0}
+					onKeyPress={handleDelete}
+					className="delete-comment"
+					onClick={handleDelete}
+				>
 					Supprimer
 				</span>
 				{userData.id === comment.userId && (
 					<span
+						tabIndex={0}
+						onKeyPress={() => {
+							setEdit(!edit);
+						}}
 						onClick={() => {
 							setEdit(!edit);
 						}}
@@ -48,10 +57,10 @@ const DeleteEditComment = ({ comment, postId }) => {
 			</div>
 			{userData.id === comment.userId && edit && (
 				<form action="" onSubmit={handleEdit} className="edit-comment-form">
-					<label htmlFor="text" onClick={() => setEdit(!edit)}>
+					{/* <label htmlFor="text" onClick={() => setEdit(!edit)}>
 						Annuler
-					</label>
-
+					</label> */}
+					<button onClick={() => setEdit(!edit)}>Annuler</button>
 					<input
 						type="text"
 						name="text"
