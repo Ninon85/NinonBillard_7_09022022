@@ -3,7 +3,7 @@ const fs = require("fs");
 
 exports.createPost = (req, res, next) => {
 	// console.log(req);
-	if (req.body.content.trim().length === 0 && !req.file) {
+	if (req.body.content && req.body.content.trim().length === 0 && !req.file) {
 		return res.status(400).json({
 			message:
 				"Un post ne peut pas être vide et ne peut pas contenir uniquement des caractères spéciaux, seuls les emoticônes sont acceptés",
@@ -109,14 +109,7 @@ exports.getAllPost = (req, res) => {
 		.then((posts) => res.status(200).json(posts))
 		.catch((error) => res.status(400).json({ error }));
 };
-// exports.getAPost = (req, res) => {
-// 	db.Post.findOne({
-// 		where: { id: req.params.id },
-// 	})
-// 		.then((post) => res.status(200).json(post))
-// 		.catch((error) => res.status(400).json({ error }));
-// };
-///////////////test///////////////////////////////////
+
 exports.getAllPostOfOneUser = (req, res) => {
 	db.Post.findAll({
 		where: { userId: req.params.userId },
